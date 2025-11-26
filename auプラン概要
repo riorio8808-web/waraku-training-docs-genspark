@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>au 料金プラン概要</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f0f0f0;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+    }
+    .slide-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 50px 60px;
+        box-sizing: border-box;
+    }
+    /* au Orange Accent */
+    .title-area {
+        margin-bottom: 30px;
+        border-left: 8px solid #ed6c00;
+        padding-left: 20px;
+    }
+    .title {
+        color: #333;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0;
+    }
+    .subtitle {
+        color: #666;
+        font-size: 24px;
+        font-weight: 500;
+        margin-top: 10px;
+    }
+    .brand-accent {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 120px;
+        background-color: #fff4e6; /* Light Orange */
+        clip-path: polygon(100% 0, 100% 100%, 0 0);
+        z-index: 0;
+    }
+    .brand-line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #ed6c00;
+    }
+    
+    /* Table Styles */
+    .compare-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+    .compare-table th {
+        background-color: #333;
+        color: white;
+        padding: 15px;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        vertical-align: middle;
+        border-right: 1px solid #555;
+    }
+    /* au Plan Header Color */
+    .compare-table th.highlight-header {
+        background-color: #ed6c00;
+    }
+    .compare-table td {
+        padding: 15px;
+        text-align: center;
+        vertical-align: middle;
+        border-bottom: 1px solid #eee;
+        border-right: 1px solid #eee;
+        color: #444;
+        font-size: 16px;
+    }
+    .compare-table td:first-child {
+        font-weight: 700;
+        background-color: #f9f9f9;
+        width: 140px;
+        color: #333;
+    }
+    .compare-table tr:last-child td {
+        border-bottom: none;
+    }
+    .plan-name {
+        font-size: 22px;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 5px;
+    }
+    .plan-tag {
+        display: inline-block;
+        font-size: 12px;
+        padding: 2px 8px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,0.2);
+        margin-bottom: 5px;
+    }
+    .price-lg {
+        font-size: 24px;
+        font-weight: 700;
+        color: #ed6c00;
+    }
+    .price-unit {
+        font-size: 14px;
+        color: #666;
+        font-weight: normal;
+    }
+    .data-badge {
+        background-color: #ed6c00;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 16px;
+        display: inline-block;
+    }
+    .data-badge.light {
+        background-color: #888;
+    }
+    .data-badge.new {
+        background-color: #e60012; /* Red for New/Attention */
+    }
+    .feature-icon {
+        color: #ed6c00;
+        margin-right: 5px;
+    }
+    .note-area {
+        font-size: 12px;
+        color: #777;
+        margin-top: auto;
+        text-align: right;
+    }
+    .feature-list {
+        text-align: left;
+        font-size: 14px;
+        line-height: 1.5;
+        padding-left: 10px;
+    }
+    .feature-list li {
+        margin-bottom: 4px;
+        position: relative;
+        padding-left: 15px;
+    }
+    .feature-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #ed6c00;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="brand-accent"></div>
+<div class="brand-line"></div>
+<div class="slide-content">
+<div class="title-area">
+<h1 class="title">au 料金プラン概要</h1>
+<h2 class="subtitle">最新トピック「マネ活」と主要プラン</h2>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<table class="compare-table">
+<thead>
+<tr>
+<th style="width: 12%;">項目</th>
+<th class="highlight-header" style="width: 29%;">
+<span class="plan-tag">無制限</span>
+<span class="plan-name">使い放題MAX<br/>5G / 4G</span>
+</th>
+<th style="width: 29%;">
+<span class="plan-tag">小容量</span>
+<span class="plan-name">スマホミニプラン<br/>5G / 4G</span>
+</th>
+<th class="highlight-header" style="width: 30%;">
+<span class="plan-tag">ポイ活・金融</span>
+<span class="plan-name">auマネ活プラン<br/>(マネ活2)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>データ<br/>容量</td>
+<td>
+<div class="data-badge">無制限</div>
+<p class="text-xs mt-1 text-gray-500">テザリング30GB迄</p>
+</td>
+<td>
+<div class="data-badge light">〜4GB</div>
+<p class="text-xs mt-1 text-gray-500">4段階制定額</p>
+</td>
+<td>
+<div class="data-badge new">注目</div>
+<p class="text-xs mt-1 text-gray-500">無制限など選択可</p>
+</td>
+</tr>
+<tr>
+<td>基本料金<br/><span class="text-xs font-normal">(割引前/税込)</span></td>
+<td>
+<span class="price-lg">7,238</span><span class="price-unit">円</span>
+</td>
+<td>
+<span class="text-sm">〜1GB: </span><span class="font-bold">3,465</span><span class="price-unit">円</span><br/>
+<span class="text-sm">〜4GB: </span><span class="font-bold">6,215</span><span class="price-unit">円</span>
+</td>
+<td>
+<span class="text-sm">使い放題MAX等に</span><br/>
+<span class="price-lg">＋α</span><span class="text-sm">の料金設定</span><br/>
+<span class="text-xs text-gray-500">※還元で実質お得に</span>
+</td>
+</tr>
+<tr>
+<td>特徴・<br/>メリット</td>
+<td>
+<ul class="feature-list">
+<li>データ使い放題で安心</li>
+<li>各種セット割適用で安価に</li>
+<li>Amazonプライム付き等<br/>派生プランも多数あり</li>
+</ul>
+</td>
+<td>
+<ul class="feature-list">
+<li>使った分だけお支払い</li>
+<li>Wi-Fi利用メインの方向け</li>
+<li>割高になりやすいため注意</li>
+</ul>
+</td>
+<td>
+<ul class="feature-list">
+<li>au PAY残高還元特典</li>
+<li>auじぶん銀行金利優遇</li>
+<li><span class="font-bold">マネ活2</span> (2025.12〜予定)<br/>クレカ積立還元強化など</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>主な割引<br/>(条件有)</td>
+<td>
+<ul class="feature-list">
+<li>家族割プラス</li>
+<li>auスマートバリュー</li>
+<li>au PAY カードお支払い割</li>
+</ul>
+</td>
+<td>
+<ul class="feature-list">
+<li>家族割プラス</li>
+<li>auスマートバリュー</li>
+<li>au PAY カードお支払い割</li>
+</ul>
+</td>
+<td>
+<ul class="feature-list">
+<li>auスマートバリュー</li>
+<li><span class="font-bold text-red-500">※家族割プラス割引対象外</span><br/>(カウントのみ対象)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="note-area">
+<p>※2025年11月時点の情報です。金額は税込です。プラン内容や適用条件は変更される可能性があります。<br/>
+            ※「auマネ活プラン」は複数のベースプラン（使い放題MAX等）と組み合わせて提供されます。詳細はau公式サイトをご確認ください。</p>
+</div>
+</div>
+</div>
+</body>
+</html>
