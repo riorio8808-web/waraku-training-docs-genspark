@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ドコモ料金プラン概要</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f0f0f0;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+    }
+    .slide-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 50px 60px;
+        box-sizing: border-box;
+    }
+    /* Docomo Red Theme */
+    .title-area {
+        margin-bottom: 25px;
+        border-left: 8px solid #cc0000;
+        padding-left: 20px;
+    }
+    .title {
+        color: #333;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0;
+    }
+    .subtitle {
+        color: #666;
+        font-size: 24px;
+        font-weight: 500;
+        margin-top: 10px;
+    }
+    .brand-accent {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 120px;
+        background-color: #ffebeb; /* Light Red */
+        clip-path: polygon(100% 0, 100% 100%, 0 0);
+        z-index: 0;
+    }
+    .brand-line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #cc0000;
+    }
+    
+    /* Table Styles */
+    .compare-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        table-layout: fixed; /* 固定幅で均等配置 */
+    }
+    .compare-table th {
+        background-color: #333;
+        color: white;
+        padding: 12px;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        vertical-align: middle;
+        border-right: 1px solid #555;
+    }
+    .compare-table th.highlight-header {
+        background-color: #cc0000;
+    }
+    .compare-table td {
+        padding: 12px;
+        text-align: center;
+        vertical-align: middle;
+        border-bottom: 1px solid #eee;
+        border-right: 1px solid #eee;
+        color: #444;
+        font-size: 16px;
+    }
+    .compare-table td:first-child {
+        font-weight: 700;
+        background-color: #f9f9f9;
+        width: 110px;
+        color: #333;
+    }
+    .compare-table tr:last-child td {
+        border-bottom: none;
+    }
+    .plan-name {
+        font-size: 20px;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 4px;
+    }
+    .plan-tag {
+        display: inline-block;
+        font-size: 11px;
+        padding: 2px 6px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,0.2);
+        margin-bottom: 4px;
+    }
+    .data-badge {
+        background-color: #cc0000;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 14px;
+        display: inline-block;
+    }
+    .data-badge.light {
+        background-color: #888;
+    }
+    .data-badge.ahamo {
+        background-color: #2d9e62; /* ahamo greenっぽい色 */
+    }
+    .feature-list {
+        text-align: left;
+        font-size: 13px;
+        line-height: 1.5;
+        padding-left: 8px;
+    }
+    .feature-list li {
+        margin-bottom: 3px;
+        position: relative;
+        padding-left: 12px;
+    }
+    .feature-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #cc0000;
+    }
+    .note-area {
+        font-size: 12px;
+        color: #777;
+        margin-top: auto;
+        text-align: right;
+        border-top: 1px solid #eee;
+        padding-top: 10px;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="brand-accent"></div>
+<div class="brand-line"></div>
+<div class="slide-content">
+<div class="title-area">
+<h1 class="title">ドコモ料金プラン概要（2025年〜）</h1>
+<h2 class="subtitle">新プラン体系「ドコモ MAX/mini」と「ahamo」の位置づけ</h2>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<table class="compare-table">
+<thead>
+<tr>
+<th>項目</th>
+<th class="highlight-header">
+<span class="plan-tag">プレミア</span>
+<span class="plan-name">ドコモ MAX</span>
+</th>
+<th class="highlight-header" style="background-color: #b30000;">
+<span class="plan-tag">ポイ活</span>
+<span class="plan-name">ドコモ ポイ活<br/>MAX / 20</span>
+</th>
+<th style="background-color: #555;">
+<span class="plan-tag">小容量・エコノミー</span>
+<span class="plan-name">ドコモ mini</span>
+</th>
+<th style="background-color: #2d9e62;">
+<span class="plan-tag">オンライン</span>
+<span class="plan-name">ahamo</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>データ容量</td>
+<td>
+<div class="data-badge">無制限</div>
+</td>
+<td>
+<div class="data-badge">無制限 / 20GB</div>
+</td>
+<td>
+<div class="data-badge light">〜3GB</div>
+<p class="text-xs mt-1 text-gray-500">従量制/定額</p>
+</td>
+<td>
+<div class="data-badge ahamo">20GB / 100GB</div>
+<p class="text-xs mt-1 text-gray-500">大盛りOP</p>
+</td>
+</tr>
+<tr>
+<td>プランの特徴</td>
+<td>
+<ul class="feature-list">
+<li>データ量無制限の最上位プラン</li>
+<li>家族セット割等の割引対象</li>
+<li>dカード支払いで割引</li>
+</ul>
+</td>
+<td>
+<ul class="feature-list">
+<li>dポイント還元に特化</li>
+<li>決済額に応じて通信料実質割引</li>
+<li>「eximo ポイ活」の後継</li>
+</ul>
+</td>
+<td>
+<ul class="feature-list">
+<li>データ利用が少ない方向け</li>
+<li>irumo/eximo低用量帯を統合</li>
+<li>サポート付きの安心プラン</li>
+</ul>
+</td>
+<td>
+<ul class="feature-list">
+<li>シンプルワンプラン</li>
+<li>5分通話無料込み</li>
+<li>海外ローミング無料(20GB)</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>対象ユーザー</td>
+<td>
+<p class="text-sm">データ利用が多い<br/>家族でまとめる方</p>
+</td>
+<td>
+<p class="text-sm">dカード/d払い利用者<br/>ポイ活重視の方</p>
+</td>
+<td>
+<p class="text-sm">Wi-Fiメインの方<br/>シニア・ライト層</p>
+</td>
+<td>
+<p class="text-sm">単身・若年層<br/>ネット完結でOKな方</p>
+</td>
+</tr>
+<tr>
+<td>注意点</td>
+<td>
+<p class="text-xs text-gray-600">テザリング等で大量利用時は制御の可能性あり</p>
+</td>
+<td>
+<p class="text-xs text-gray-600">指定決済サービスの利用必須<br/>還元上限あり</p>
+</td>
+<td>
+<p class="text-xs text-gray-600">ドコモメール等のオプション扱いに注意</p>
+</td>
+<td>
+<p class="text-xs text-gray-600">店頭サポート有料<br/>キャリアメール有料</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="grid grid-cols-2 gap-4 mt-2">
+<div class="bg-gray-50 p-3 rounded border border-gray-200">
+<h3 class="text-sm font-bold text-red-700 mb-1"><i class="fas fa-exchange-alt mr-1"></i> 旧プランからの変更点</h3>
+<p class="text-xs text-gray-600 leading-relaxed">
+                        eximo/irumoの区分が再編され、無制限は「MAX」、小容量は「mini」に名称統合。ポイ活プランが独立した選択肢として強化されています。ahamoは引き続きオンライン専用ブランドとして継続します。
+                    </p>
+</div>
+<div class="bg-gray-50 p-3 rounded border border-gray-200">
+<h3 class="text-sm font-bold text-red-700 mb-1"><i class="fas fa-tag mr-1"></i> 割引サービス</h3>
+<p class="text-xs text-gray-600 leading-relaxed">
+                        「みんなドコモ割」「ドコモ光セット割」「dカードお支払割」の3点セットが基本（ahamoは対象外/カウント対象のみ）。ポイ活プランは独自の還元ルールが適用されます。
+                    </p>
+</div>
+</div>
+</div>
+<div class="note-area">
+<p>※2025年6月時点（予測・研修用）の情報です。実際の提供条件や料金はドコモ公式サイトで最新情報をご確認ください。<br/>
+            ※プラン名称や区分は本研修資料上の仮称または発表時点のものです。</p>
+</div>
+</div>
+</div>
+</body>
+</html>
