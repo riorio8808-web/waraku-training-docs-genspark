@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>目次</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans JP', sans-serif;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+    }
+    .slide-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    .slide-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 720px;
+        padding: 60px 80px;
+        box-sizing: border-box;
+    }
+    .title {
+        color: #333;
+        font-size: 42px;
+        font-weight: 700;
+        margin-bottom: 40px;
+        position: relative;
+        padding-left: 20px;
+    }
+    .title:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 8px;
+        background-color: #e60083;
+    }
+    .brand-accent {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 280px;
+        height: 160px;
+        background-color: #e60083;
+        clip-path: polygon(100% 0, 100% 100%, 0 100%);
+        opacity: 0.8;
+        z-index: 5;
+    }
+    .toc-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-width: 900px;
+        z-index: 10;
+    }
+    .toc-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 20px;
+        border-radius: 6px;
+        background-color: rgba(245, 245, 245, 0.9);
+    }
+    .toc-section.main {
+        background-color: rgba(230, 0, 131, 0.1);
+        border-left: 4px solid #e60083;
+    }
+    .toc-title {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 20px;
+    }
+    .toc-number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: #333;
+        color: white;
+        font-weight: 700;
+        font-size: 18px;
+    }
+    .main .toc-number {
+        background-color: #e60083;
+    }
+    .toc-page {
+        font-size: 18px;
+        color: #555;
+        font-weight: 500;
+    }
+    .section-divider {
+        width: 100%;
+        height: 1px;
+        background-color: #e0e0e0;
+        margin: 10px 0;
+    }
+    .section-label {
+        font-size: 16px;
+        color: #777;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: -5px;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="slide-bg"></div>
+<div class="brand-accent"></div>
+<div class="slide-content">
+<h1 class="title">目次</h1>
+<div class="toc-container">
+<p class="section-label">メインコンテンツ</p>
+<div class="toc-section main">
+<div class="toc-title">
+<span class="toc-number">1</span>
+<p>SoftBank料金プラン</p>
+</div>
+<div class="toc-page">
+<p>3-4</p>
+</div>
+</div>
+<div class="toc-section main">
+<div class="toc-title">
+<span class="toc-number">2</span>
+<p>Y!mobile料金プラン</p>
+</div>
+<div class="toc-page">
+<p>5-6</p>
+</div>
+</div>
+<div class="toc-section main">
+<div class="toc-title">
+<span class="toc-number">3</span>
+<p>固定回線（SoftBank 光/Air）</p>
+</div>
+<div class="toc-page">
+<p>7-8</p>
+</div>
+</div>
+<div class="section-divider"></div>
+<p class="section-label">サブコンテンツ</p>
+<div class="toc-section">
+<div class="toc-title">
+<span class="toc-number">4</span>
+<p>ドコモ新プラン概要</p>
+</div>
+<div class="toc-page">
+<p>9</p>
+</div>
+</div>
+<div class="toc-section">
+<div class="toc-title">
+<span class="toc-number">5</span>
+<p>au新プラン概要</p>
+</div>
+<div class="toc-page">
+<p>10</p>
+</div>
+</div>
+<div class="toc-section">
+<div class="toc-title">
+<span class="toc-number">6</span>
+<p>MVNO基礎</p>
+</div>
+<div class="toc-page">
+<p>11</p>
+</div>
+</div>
+<div class="toc-section">
+<div class="toc-title">
+<span class="toc-number">7</span>
+<p>機種選びのポイント</p>
+</div>
+<div class="toc-page">
+<p>12</p>
+</div>
+</div>
+<div class="toc-section">
+<div class="toc-title">
+<span class="toc-number">8</span>
+<p>キャリア比較</p>
+</div>
+<div class="toc-page">
+<p>13</p>
+</div>
+</div>
+<div class="toc-section">
+<div class="toc-title">
+<span class="toc-number">9</span>
+<p>まとめ/参考資料</p>
+</div>
+<div class="toc-page">
+<p>14-15</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
