@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>シンプル3 M（Y!mobile）詳細</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f0f0f0;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+    }
+    .slide-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 40px 60px;
+        box-sizing: border-box;
+    }
+    .brand-accent {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 250px;
+        height: 250px;
+        background-color: rgba(229, 0, 19, 0.03); /* Y!mobile Red light */
+        border-radius: 0 0 0 100%;
+        z-index: 0;
+    }
+    .brand-stripe {
+        position: absolute;
+        left: 0;
+        top: 40px;
+        width: 8px;
+        height: 80px;
+        background-color: #e50013; /* Y!mobile Red */
+    }
+    .header-area {
+        margin-bottom: 30px;
+        padding-left: 24px;
+        position: relative;
+    }
+    .title {
+        color: #333;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+    .subtitle {
+        color: #e50013;
+        font-size: 22px;
+        font-weight: 500;
+        margin-top: 8px;
+    }
+    
+    /* Card Layout */
+    .card-container {
+        display: flex;
+        gap: 30px;
+        flex: 1;
+        align-items: stretch;
+    }
+    .main-card {
+        flex: 0 0 40%;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        border: 1px solid #eaeaea;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .main-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #e50013;
+    }
+    .detail-card {
+        flex: 1;
+        background-color: #fcfcfc;
+        border-radius: 12px;
+        border: 1px solid #eaeaea;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    /* Main Card Content */
+    .plan-icon {
+        font-size: 48px;
+        color: #e50013;
+        margin-bottom: 20px;
+        background-color: rgba(229, 0, 19, 0.1);
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        font-weight: 700;
+    }
+    .plan-title-lg {
+        font-size: 32px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .price-tag {
+        font-size: 48px;
+        font-weight: 700;
+        color: #e50013;
+        line-height: 1;
+    }
+    .price-unit {
+        font-size: 20px;
+        color: #666;
+        font-weight: 500;
+    }
+    .price-note {
+        font-size: 14px;
+        color: #888;
+        margin-top: 5px;
+    }
+    .target-badge {
+        background-color: #333;
+        color: white;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 20px;
+    }
+    
+    /* Detail Items */
+    .detail-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+    }
+    .detail-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    .detail-icon {
+        width: 40px;
+        height: 40px;
+        background-color: #e50013;
+        color: white;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        flex-shrink: 0;
+    }
+    .detail-content h4 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #333;
+        margin: 0 0 5px 0;
+    }
+    .detail-content p {
+        font-size: 16px;
+        color: #555;
+        margin: 0;
+        line-height: 1.5;
+    }
+    .ymobile-highlight {
+        background-color: #fff0f0;
+        border-left: 4px solid #e50013;
+        padding: 15px;
+        border-radius: 0 8px 8px 0;
+        margin-top: 5px;
+    }
+    .recommendation-box {
+        background-color: #333;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin-top: auto;
+    }
+    .recommendation-title {
+        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .recommendation-text {
+        font-size: 14px;
+        opacity: 0.9;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="brand-accent"></div>
+<div class="brand-stripe"></div>
+<div class="slide-content">
+<div class="header-area">
+<h1 class="title">シンプル3 M</h1>
+<p class="subtitle">動画やSNSも適度に楽しめるバランスプラン</p>
+</div>
+<div class="card-container">
+<!-- Left Card: Key Info -->
+<div class="main-card">
+<div class="plan-icon">M</div>
+<h2 class="plan-title-lg">シンプル3 M</h2>
+<div class="mt-4 text-center">
+<p><span class="price-tag">4,158</span><span class="price-unit">円/月</span></p>
+<p class="price-note">（税込・各種割引前）</p>
+</div>
+<div class="target-badge">動画・SNSユーザー向け</div>
+<div class="mt-8 w-full">
+<div class="recommendation-box">
+<div class="recommendation-title">
+<i class="fas fa-check-circle text-red-500"></i>
+<p>こんな方におすすめ</p>
+</div>
+<p class="recommendation-text">
+                            動画やSNSを毎日楽しむ方<br/>
+                            外出先でもテザリングを使いたい方<br/>
+                            超過後も一定の速度が欲しい方
+                        </p>
+</div>
+</div>
+</div>
+<!-- Right Card: Details -->
+<div class="detail-card">
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-database"></i>
+</div>
+<div class="detail-content w-full">
+<h4>データ容量 30GB</h4>
+<p>月間30GBまで高速通信が可能。動画や音楽ストリーミング、SNSの利用に適した容量です。</p>
+<div class="ymobile-highlight">
+<p class="text-sm font-bold text-red-600">余ったデータは翌月にくりこし可能</p>
+<p class="text-xs text-gray-600 mt-1">※規定容量まで。データ増量オプション加入で最大35GB/月に増量可能（オプション料別途）。</p>
+</div>
+</div>
+</div>
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-tachometer-alt"></i>
+</div>
+<div class="detail-content">
+<h4>超過後の速度 最大1Mbps</h4>
+<p>データ容量を使い切っても、最大1Mbpsの速度で利用可能。Web閲覧や標準画質の動画、SNS、LINEなどは比較的快適に使えます。</p>
+<p class="text-sm text-gray-500 mt-1">※規定容量の半分（15GB）を追加で消費すると、最大128kbpsに低速化されます。</p>
+</div>
+</div>
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-phone-alt"></i>
+</div>
+<div class="detail-content">
+<h4>通話オプション</h4>
+<p>通話料金は22円/30秒。必要に応じて通話定額オプションを追加可能です。</p>
+<ul class="list-disc list-inside text-sm text-gray-600 mt-1">
+<li>だれとでも定額＋（10分以内無料）：880円/月</li>
+<li>スーパーだれとでも定額＋（24時間無料）：1,980円/月</li>
+</ul>
+</div>
+</div>
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-tags"></i>
+</div>
+<div class="detail-content">
+<h4>おトクな割引適用</h4>
+<p>おうち割 光セット（A）とPayPayカード割の適用で、月額料金を大幅に抑えられます。</p>
+<p class="text-sm text-gray-600">【実質例】4,158円 − 1,650円 − 550円 ＝ <span class="font-bold text-red-600">1,958円/月</span>（PayPayカード ゴールド利用時）</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
