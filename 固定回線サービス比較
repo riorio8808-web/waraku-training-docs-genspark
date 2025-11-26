@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>固定回線サービス比較</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f0f0f0;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+    }
+    .slide-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 50px 60px;
+        box-sizing: border-box;
+    }
+    .title-area {
+        margin-bottom: 30px;
+        border-left: 8px solid #e60083;
+        padding-left: 20px;
+    }
+    .title {
+        color: #333;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0;
+    }
+    .subtitle {
+        color: #666;
+        font-size: 24px;
+        font-weight: 500;
+        margin-top: 10px;
+    }
+    .brand-accent {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 120px;
+        background-color: #fef0f5;
+        clip-path: polygon(100% 0, 100% 100%, 0 0);
+        z-index: 0;
+    }
+    .brand-line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #e60083;
+    }
+    
+    /* Table Styles */
+    .compare-table {
+        width: 100%;
+        border-collapse: separate; 
+        border-spacing: 0;
+        background-color: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        border: 1px solid #eee;
+    }
+    .compare-table th {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+        vertical-align: middle;
+        border-right: 1px solid #555;
+    }
+    .compare-table th:last-child {
+        border-right: none;
+    }
+    .compare-table th.highlight-header-blue {
+        background-color: #0057b8; /* SoftBank Blue specific for Hikari if needed, using brand consistent dark blue/grey or keeping brand pink */
+        background-color: #333; /* Keeping consistent with dark header style, or using specific colors */
+    }
+    .compare-table th.highlight-header-pink {
+        background-color: #e60083; /* SoftBank Pink */
+    }
+    
+    .compare-table td {
+        padding: 18px 20px;
+        text-align: center;
+        vertical-align: middle;
+        border-bottom: 1px solid #eee;
+        border-right: 1px solid #eee;
+        color: #444;
+        font-size: 18px;
+        line-height: 1.5;
+    }
+    .compare-table td:first-child {
+        font-weight: 700;
+        background-color: #f9f9f9;
+        color: #333;
+        border-right: 2px solid #eee;
+    }
+    .compare-table td:last-child {
+        border-right: none;
+    }
+    .compare-table tr:last-child td {
+        border-bottom: none;
+    }
+    
+    .service-name {
+        font-size: 28px;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 5px;
+    }
+    .service-desc {
+        font-size: 14px;
+        font-weight: normal;
+        opacity: 0.9;
+        display: block;
+    }
+    
+    .icon-lg {
+        font-size: 32px;
+        margin-bottom: 10px;
+        display: block;
+    }
+    
+    .highlight-text {
+        color: #e60083;
+        font-weight: 700;
+    }
+    .blue-text {
+        color: #0057b8;
+        font-weight: 700;
+    }
+    
+    .check-list {
+        text-align: left;
+        display: inline-block;
+        margin: 0 auto;
+    }
+    .check-list li {
+        margin-bottom: 5px;
+        position: relative;
+        padding-left: 24px;
+    }
+    .check-list li::before {
+        font-family: "Font Awesome 6 Free";
+        content: "\f00c";
+        font-weight: 900;
+        position: absolute;
+        left: 0;
+        top: 2px;
+        color: #22c55e; /* Green check */
+    }
+    .cross-list li::before {
+        font-family: "Font Awesome 6 Free";
+        content: "\f00d";
+        font-weight: 900;
+        position: absolute;
+        left: 0;
+        top: 2px;
+        color: #ef4444; /* Red cross */
+    }
+
+    .recommend-badge {
+        display: inline-block;
+        background-color: #ffeb3b;
+        color: #333;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 4px 8px;
+        border-radius: 4px;
+        margin-bottom: 8px;
+    }
+
+    .note-area {
+        font-size: 12px;
+        color: #777;
+        margin-top: auto;
+        text-align: right;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="brand-accent"></div>
+<div class="brand-line"></div>
+<div class="slide-content">
+<div class="title-area">
+<h1 class="title">固定回線サービス比較</h1>
+<h2 class="subtitle">SoftBank 光 vs SoftBank Air：どちらを提案すべきか？</h2>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<table class="compare-table">
+<thead>
+<tr>
+<th style="width: 15%;">項目</th>
+<th class="highlight-header-blue" style="width: 42.5%;">
+<i class="fas fa-house-signal icon-lg"></i>
+<span class="service-name">SoftBank 光</span>
+<span class="service-desc">超高速・安定の光回線</span>
+</th>
+<th class="highlight-header-pink" style="width: 42.5%;">
+<i class="fas fa-wifi icon-lg"></i>
+<span class="service-name">SoftBank Air</span>
+<span class="service-desc">工事不要・置くだけWi-Fi</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>回線方式</td>
+<td>
+<p class="font-bold text-xl">光ファイバー（有線）</p>
+<p class="text-sm text-gray-500 mt-1">物理ケーブルを宅内へ引き込み</p>
+</td>
+<td>
+<p class="font-bold text-xl">モバイル電波（無線）</p>
+<p class="text-sm text-gray-500 mt-1">5G / 4G LTE通信を利用</p>
+</td>
+</tr>
+<tr>
+<td>通信速度<br/><span class="text-xs font-normal">(品質)</span></td>
+<td>
+<p class="blue-text text-xl mb-1">◎ 非常に高速・安定</p>
+<p class="text-sm">最大1Gbps / 10Gbps<br/>オンラインゲーム・大容量通信に最適</p>
+</td>
+<td>
+<p class="highlight-text text-xl mb-1">◯ 標準的・手軽</p>
+<p class="text-sm">下り最大2.7Gbps(Airターミナル6)<br/>エリア・時間帯により変動あり</p>
+</td>
+</tr>
+<tr>
+<td>開通工事</td>
+<td>
+<p class="font-bold text-red-500">必要（立ち会いあり）</p>
+<p class="text-sm text-gray-500 mt-1">開通まで2週間〜1ヶ月程度<br/>(繁忙期はさらに期間要)</p>
+</td>
+<td>
+<p class="font-bold text-green-600">不要</p>
+<p class="text-sm text-gray-500 mt-1">機器が届けば<span class="underline decoration-green-400 decoration-2">コンセントに挿すだけ</span><br/>即日〜数日で利用開始</p>
+</td>
+</tr>
+<tr>
+<td>月額料金<br/><span class="text-xs font-normal">(税込/目安)</span></td>
+<td>
+<p>戸建: <span class="font-bold">5,720円</span></p>
+<p>集合: <span class="font-bold">4,180円</span></p>
+<p class="text-xs text-gray-500 mt-1">※2年自動更新プランの場合</p>
+</td>
+<td>
+<p class="font-bold text-2xl">5,368円</p>
+<p class="text-xs text-gray-500 mt-1">※キャンペーンによる月額割引あり</p>
+</td>
+</tr>
+<tr>
+<td>向いている人</td>
+<td>
+<ul class="check-list text-sm">
+<li>通信速度・安定性を最重視する方</li>
+<li>オンラインゲームや4K動画をよく見る</li>
+<li>家族複数人で同時接続する</li>
+<li>持ち家または長期居住予定</li>
+</ul>
+</td>
+<td>
+<ul class="check-list text-sm">
+<li>すぐにインターネットを使いたい方</li>
+<li>工事ができない・したくない方</li>
+<li>一人暮らし・単身赴任・学生</li>
+<li>配線をごちゃごちゃさせたくない</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="note-area">
+<p>※通信速度はベストエフォート方式であり、お客様の通信環境や回線混雑状況により変化します。<br/>
+            ※SoftBank Airの5G通信は対象エリアが限られます。Airターミナル6はWi-Fi 7に対応しています。<br/>
+            ※料金は2025年11月時点の税込価格です。各種キャンペーン適用前の基本料金を表示しています。</p>
+</div>
+</div>
+</div>
+</body>
+</html>
