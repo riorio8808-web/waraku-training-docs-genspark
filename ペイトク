@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ペイトク無制限（SoftBank）詳細</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f0f0f0;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+    }
+    .slide-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 40px 60px;
+        box-sizing: border-box;
+    }
+    .brand-accent {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 250px;
+        height: 250px;
+        background-color: rgba(230, 0, 131, 0.03);
+        border-radius: 0 0 0 100%;
+        z-index: 0;
+    }
+    .brand-stripe {
+        position: absolute;
+        left: 0;
+        top: 40px;
+        width: 8px;
+        height: 80px;
+        background-color: #e60083;
+    }
+    .header-area {
+        margin-bottom: 30px;
+        padding-left: 24px;
+        position: relative;
+    }
+    .title {
+        color: #333;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+    .subtitle {
+        color: #e60083;
+        font-size: 22px;
+        font-weight: 500;
+        margin-top: 8px;
+    }
+    
+    /* Card Layout */
+    .card-container {
+        display: flex;
+        gap: 30px;
+        flex: 1;
+        align-items: stretch;
+    }
+    .main-card {
+        flex: 0 0 40%;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        border: 1px solid #eaeaea;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .main-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #e60083;
+    }
+    .detail-card {
+        flex: 1;
+        background-color: #fcfcfc;
+        border-radius: 12px;
+        border: 1px solid #eaeaea;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    /* Main Card Content */
+    .plan-icon {
+        font-size: 72px;
+        color: #e60083;
+        margin-bottom: 20px;
+        background-color: rgba(230, 0, 131, 0.1);
+        width: 120px;
+        height: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+    .plan-title-lg {
+        font-size: 32px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .price-tag {
+        font-size: 48px;
+        font-weight: 700;
+        color: #e60083;
+        line-height: 1;
+    }
+    .price-unit {
+        font-size: 20px;
+        color: #666;
+        font-weight: 500;
+    }
+    .price-note {
+        font-size: 14px;
+        color: #888;
+        margin-top: 5px;
+    }
+    .target-badge {
+        background-color: #333;
+        color: white;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 20px;
+    }
+    
+    /* Detail Items */
+    .detail-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+    }
+    .detail-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    .detail-icon {
+        width: 40px;
+        height: 40px;
+        background-color: #e60083;
+        color: white;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        flex-shrink: 0;
+    }
+    .detail-content h4 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #333;
+        margin: 0 0 5px 0;
+    }
+    .detail-content p {
+        font-size: 16px;
+        color: #555;
+        margin: 0;
+        line-height: 1.5;
+    }
+    .paypay-highlight {
+        background-color: #fff0f5;
+        border-left: 4px solid #e60083;
+        padding: 15px;
+        border-radius: 0 8px 8px 0;
+        margin-top: 5px;
+    }
+    .recommendation-box {
+        background-color: #333;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin-top: auto;
+    }
+    .recommendation-title {
+        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .recommendation-text {
+        font-size: 14px;
+        opacity: 0.9;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="brand-accent"></div>
+<div class="brand-stripe"></div>
+<div class="slide-content">
+<div class="header-area">
+<h1 class="title">ペイトク無制限</h1>
+<p class="subtitle">PayPayポイント還元に特化したデータ無制限プラン</p>
+</div>
+<div class="card-container">
+<!-- Left Card: Key Info -->
+<div class="main-card">
+<div class="plan-icon">
+<i class="fas fa-infinity"></i>
+</div>
+<h2 class="plan-title-lg">ペイトク無制限</h2>
+<div class="mt-4 text-center">
+<p><span class="price-tag">9,625</span><span class="price-unit">円/月</span></p>
+<p class="price-note">（税込・各種割引前）</p>
+</div>
+<div class="target-badge">キャッシュレス派に最適</div>
+<div class="mt-8 w-full">
+<div class="recommendation-box">
+<div class="recommendation-title">
+<i class="fas fa-check-circle text-pink-500"></i>
+<p>こんな方におすすめ</p>
+</div>
+<p class="recommendation-text">
+                            PayPayでの決済が多い方<br/>
+                            データ容量を気にせず使いたい方<br/>
+                            ポイント還元で実質負担を下げたい方
+                        </p>
+</div>
+</div>
+</div>
+<!-- Right Card: Details -->
+<div class="detail-card">
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-coins"></i>
+</div>
+<div class="detail-content w-full">
+<h4>PayPayポイント高還元</h4>
+<p>PayPay（クレジット/残高/ポイント）決済でポイント付与率アップ。</p>
+<div class="paypay-highlight">
+<p class="text-sm font-bold text-pink-600">＋5%還元（上限4,000pt/月）</p>
+<p class="text-xs text-gray-600 mt-1">※対象外の決済あり。詳細条件は公式サイト参照。</p>
+</div>
+</div>
+</div>
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-wifi"></i>
+</div>
+<div class="detail-content">
+<h4>データ通信・速度制御</h4>
+<p>基本データ容量は無制限。ただし、テザリング・データシェアは合計<span class="font-bold text-pink-600">50GB/月</span>まで。</p>
+<p class="text-sm text-gray-500 mt-1">※合計200GB/月を超えた場合、通信速度が最大4.5Mbpsに制御される場合があります。</p>
+</div>
+</div>
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-tachometer-alt"></i>
+</div>
+<div class="detail-content">
+<h4>通信品質について</h4>
+<p>時間帯により速度制御の場合あり。ネットワーク混雑時や動画・ゲームなど大量のデータ通信を行う場合、通信速度が制限されることがあります。</p>
+</div>
+</div>
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-tags"></i>
+</div>
+<div class="detail-content">
+<h4>適用可能な主な割引</h4>
+<p>新みんな家族割、おうち割 光セットの適用が可能。</p>
+<p class="text-sm text-gray-600">ポイント還元と割引を組み合わせることで、実質負担額を大きく下げることが可能です。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
