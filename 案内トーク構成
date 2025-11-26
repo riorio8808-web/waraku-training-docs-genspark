@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>まとめ（提案トークの型）</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f8f9fa;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+    }
+    .slide-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 50px 70px;
+        box-sizing: border-box;
+    }
+    .brand-bar {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 12px;
+        background-color: #e60083;
+    }
+    .corner-accent {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 180px;
+        height: 180px;
+        background: rgba(230, 0, 131, 0.05);
+        border-bottom-left-radius: 100%;
+        z-index: 0;
+    }
+    .header-area {
+        margin-bottom: 40px;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 15px;
+        position: relative;
+    }
+    .title {
+        color: #333;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 10px;
+    }
+    .subtitle {
+        color: #e60083;
+        font-size: 20px;
+        font-weight: 500;
+    }
+    
+    /* Main Flow Layout */
+    .flow-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        gap: 20px;
+        flex: 1;
+    }
+    .flow-step {
+        flex: 1;
+        background: white;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        padding-bottom: 20px;
+    }
+    
+    /* Step Header */
+    .step-header {
+        padding: 20px;
+        background-color: #f9fafb;
+        border-bottom: 1px solid #eee;
+        border-radius: 12px 12px 0 0;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .step-number {
+        width: 40px;
+        height: 40px;
+        background-color: #e60083;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+    .step-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #333;
+        margin: 0;
+    }
+    
+    /* Step Body */
+    .step-body {
+        padding: 25px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    /* Content Items */
+    .content-item {
+        background-color: #fff;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .item-icon {
+        color: #e60083;
+        font-size: 18px;
+        margin-top: 3px;
+        width: 24px;
+        text-align: center;
+    }
+    .item-text strong {
+        display: block;
+        font-size: 16px;
+        color: #4b5563;
+        margin-bottom: 4px;
+    }
+    .item-text p {
+        font-size: 14px;
+        color: #666;
+        margin: 0;
+        line-height: 1.5;
+    }
+    
+    /* Proposal Box */
+    .proposal-box {
+        background-color: #fff1f2;
+        border-left: 4px solid #e60083;
+        padding: 12px;
+        border-radius: 4px;
+        margin-bottom: 8px;
+    }
+    .proposal-label {
+        font-size: 12px;
+        font-weight: 700;
+        color: #e60083;
+        margin-bottom: 4px;
+        display: block;
+    }
+    .proposal-content {
+        font-size: 14px;
+        font-weight: 700;
+        color: #333;
+        margin: 0;
+    }
+    
+    /* Arrow Connector */
+    .flow-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        color: #d1d5db;
+        font-size: 24px;
+    }
+
+    /* Bottom Message */
+    .key-message {
+        margin-top: 30px;
+        background-color: #333;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="brand-bar"></div>
+<div class="corner-accent"></div>
+<div class="slide-content">
+<div class="header-area">
+<h1 class="title">まとめ：提案トークの型</h1>
+<p class="subtitle">お客様に最適なプランを提案するための3ステップ</p>
+</div>
+<div class="flow-wrapper">
+<!-- Step 1: Hearing -->
+<div class="flow-step">
+<div class="step-header">
+<div class="step-number">1</div>
+<h3 class="step-title">ヒアリング</h3>
+</div>
+<div class="step-body">
+<div class="content-item">
+<div class="item-icon"><i class="fas fa-chart-pie"></i></div>
+<div class="item-text">
+<strong>データ使用量</strong>
+<p>「毎月ギガはどのくらい使いますか？」「月末に速度制限にかかることは？」</p>
+</div>
+</div>
+<div class="content-item">
+<div class="item-icon"><i class="fas fa-users"></i></div>
+<div class="item-text">
+<strong>家族構成</strong>
+<p>「ご家族でSoftBank/Y!mobileをお使いの方はいますか？」「お子様のスマホデビューは？」</p>
+</div>
+</div>
+<div class="content-item">
+<div class="item-icon"><i class="fas fa-home"></i></div>
+<div class="item-text">
+<strong>固定回線・決済</strong>
+<p>「ご自宅にWi-Fiはありますか？」「PayPayはよく使われますか？」</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flow-arrow">
+<i class="fas fa-chevron-right"></i>
+</div>
+<!-- Step 2: Proposal -->
+<div class="flow-step">
+<div class="step-header">
+<div class="step-number">2</div>
+<h3 class="step-title">提 案</h3>
+</div>
+<div class="step-body">
+<div class="proposal-box">
+<span class="proposal-label">SoftBank 推奨パターン</span>
+<p class="proposal-content">「無制限」×「光セット割」×「家族割」</p>
+<p class="text-xs text-gray-600 mt-1">品質・大容量重視、家族3人以上の方へ</p>
+</div>
+<div class="proposal-box" style="border-color: #ff0033; background-color: #fff5f5;">
+<span class="proposal-label" style="color: #ff0033;">Y!mobile 推奨パターン</span>
+<p class="proposal-content">「容量」×「おうち割(A)」×「カード割」</p>
+<p class="text-xs text-gray-600 mt-1">コスパ重視、親子割対象、ライト〜中容量</p>
+</div>
+<div class="proposal-box" style="border-color: #00a0e6; background-color: #f0f9ff;">
+<span class="proposal-label" style="color: #00a0e6;">固定回線 推奨パターン</span>
+<p class="proposal-content">工事可なら「光」 / 不可・短期なら「Air」</p>
+<p class="text-xs text-gray-600 mt-1">スマホとセット提案を必ず行う</p>
+</div>
+</div>
+</div>
+<div class="flow-arrow">
+<i class="fas fa-chevron-right"></i>
+</div>
+<!-- Step 3: Closing -->
+<div class="flow-step">
+<div class="step-header">
+<div class="step-number">3</div>
+<h3 class="step-title">クロージング</h3>
+</div>
+<div class="step-body">
+<div class="content-item">
+<div class="item-icon"><i class="fas fa-calculator"></i></div>
+<div class="item-text">
+<strong>実質料金の見える化</strong>
+<p>「割引が入ると、今の携帯代と比べて月々〇〇円おトクになります！」と具体額を提示。</p>
+</div>
+</div>
+<div class="content-item">
+<div class="item-icon"><i class="fas fa-exclamation-circle"></i></div>
+<div class="item-text">
+<strong>注意事項の確認</strong>
+<p>「初月は割引が入らない場合があります」「オプションの加入条件」などを丁寧に説明し信頼感UP。</p>
+</div>
+</div>
+<div class="content-item">
+<div class="item-icon"><i class="fas fa-check-double"></i></div>
+<div class="item-text">
+<strong>公式情報の提示</strong>
+<p>タブレット等で公式サイトの料金シミュレーション画面を見せながら最終確認。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="key-message">
+<i class="fas fa-lightbulb text-yellow-400 text-2xl"></i>
+<span>「お客様のライフスタイル」に合わせて、最適なブランド（SB/YM）と回線（光/Air）を組み合わせることが最重要です！</span>
+</div>
+</div>
+</div>
+</body>
+</html>
