@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SoftBank 光（1ギガ/10ギガ）詳細</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f0f0f0;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+    }
+    .slide-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 40px 60px;
+        box-sizing: border-box;
+    }
+    .brand-accent {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 250px;
+        height: 250px;
+        background-color: rgba(230, 0, 131, 0.03);
+        border-radius: 0 0 0 100%;
+        z-index: 0;
+    }
+    .brand-stripe {
+        position: absolute;
+        left: 0;
+        top: 40px;
+        width: 8px;
+        height: 80px;
+        background-color: #e60083;
+    }
+    .header-area {
+        margin-bottom: 30px;
+        padding-left: 24px;
+        position: relative;
+    }
+    .title {
+        color: #333;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+    .subtitle {
+        color: #e60083;
+        font-size: 22px;
+        font-weight: 500;
+        margin-top: 8px;
+    }
+    
+    /* Card Layout */
+    .card-container {
+        display: flex;
+        gap: 30px;
+        flex: 1;
+        align-items: stretch;
+    }
+    .main-card {
+        flex: 0 0 40%;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        border: 1px solid #eaeaea;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .main-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #e60083;
+    }
+    .detail-card {
+        flex: 1;
+        background-color: #fcfcfc;
+        border-radius: 12px;
+        border: 1px solid #eaeaea;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    /* Main Card Content */
+    .plan-icon {
+        font-size: 64px;
+        color: #e60083;
+        margin-bottom: 15px;
+        background-color: rgba(230, 0, 131, 0.1);
+        width: 110px;
+        height: 110px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+    .plan-title-lg {
+        font-size: 32px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .price-block {
+        text-align: center;
+        width: 100%;
+        border-bottom: 1px dashed #ddd;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+    .price-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 8px;
+    }
+    .price-label {
+        font-size: 16px;
+        color: #555;
+        font-weight: 500;
+    }
+    .price-val {
+        font-size: 28px;
+        font-weight: 700;
+        color: #333;
+    }
+    .price-unit-sm {
+        font-size: 14px;
+        color: #666;
+        font-weight: normal;
+    }
+    .target-badge {
+        background-color: #333;
+        color: white;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 10px;
+    }
+    
+    /* Detail Items */
+    .detail-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+    }
+    .detail-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    .detail-icon {
+        width: 40px;
+        height: 40px;
+        background-color: #e60083;
+        color: white;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        flex-shrink: 0;
+    }
+    .detail-content h4 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #333;
+        margin: 0 0 5px 0;
+    }
+    .detail-content p {
+        font-size: 15px;
+        color: #555;
+        margin: 0;
+        line-height: 1.5;
+    }
+    .feature-highlight {
+        background-color: #f0f8ff;
+        border-left: 4px solid #00a2e8; /* Light blue for variety or stick to pink */
+        padding: 10px 15px;
+        border-radius: 0 8px 8px 0;
+        margin-top: 8px;
+    }
+    .campaign-highlight {
+        background-color: #fff0f5;
+        border-left: 4px solid #e60083;
+        padding: 10px 15px;
+        border-radius: 0 8px 8px 0;
+        margin-top: 8px;
+    }
+    
+    .recommendation-box {
+        background-color: #333;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin-top: auto;
+        width: 100%;
+    }
+    .recommendation-title {
+        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .recommendation-text {
+        font-size: 14px;
+        opacity: 0.9;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="brand-accent"></div>
+<div class="brand-stripe"></div>
+<div class="slide-content">
+<div class="header-area">
+<h1 class="title">SoftBank 光</h1>
+<p class="subtitle">超高速・高品質な自宅用インターネット光回線</p>
+</div>
+<div class="card-container">
+<!-- Left Card: Key Info -->
+<div class="main-card">
+<div class="plan-icon">
+<i class="fas fa-house-signal"></i>
+</div>
+<h2 class="plan-title-lg">SoftBank 光</h2>
+<div class="w-full mt-4">
+<div class="price-block">
+<div class="price-row">
+<span class="price-label">戸建住宅</span>
+<span class="price-val">5,720<span class="price-unit-sm">円/月</span></span>
+</div>
+<div class="price-row">
+<span class="price-label">集合住宅</span>
+<span class="price-val">4,180<span class="price-unit-sm">円/月</span></span>
+</div>
+<p class="text-xs text-gray-500 text-center mt-1">※2年自動更新プラン（1ギガ）の場合</p>
+</div>
+</div>
+<div class="target-badge">スマホユーザーなら必須</div>
+<div class="mt-auto w-full">
+<div class="recommendation-box">
+<div class="recommendation-title">
+<i class="fas fa-check-circle text-pink-500"></i>
+<p>こんな方におすすめ</p>
+</div>
+<p class="recommendation-text">
+                            SoftBank/Y!mobileスマホ利用者<br/>
+                            安定した高速通信が必要な方<br/>
+                            動画やオンラインゲームを楽しむ方
+                        </p>
+</div>
+</div>
+</div>
+<!-- Right Card: Details -->
+<div class="detail-card">
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-tachometer-alt"></i>
+</div>
+<div class="detail-content w-full">
+<h4>選べる速度プラン（1ギガ / 10ギガ）</h4>
+<p>標準的な「1ギガ」に加え、超高速な「10ギガ」も提供中。</p>
+<div class="feature-highlight">
+<p class="text-sm font-bold text-gray-800">IPv6 IPoE + IPv4接続方式に対応</p>
+<p class="text-xs text-gray-600 mt-1">混雑する時間帯でも安定した高速通信が可能。プロバイダ一体型で契約もシンプル。</p>
+</div>
+</div>
+</div>
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-tv"></i>
+</div>
+<div class="detail-content w-full">
+<h4>エンタメ特典（Netflixパック）</h4>
+<p>SoftBank 光とNetflixをセットで契約すると月額料金がおトクに。</p>
+<p class="text-sm text-gray-600 mt-1">※スタンダード/プレミアムプラン等から選択可能。毎月最大330円割引。</p>
+</div>
+</div>
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-tools"></i>
+</div>
+<div class="detail-content w-full">
+<h4>工事費実質0円キャンペーン</h4>
+<p>新規契約や乗り換え時の工事費相当額を月額割引で還元。</p>
+<div class="campaign-highlight">
+<p class="text-sm font-bold text-pink-600">工事費相当額（最大31,680円）が実質無料</p>
+<p class="text-xs text-gray-600 mt-1">※適用条件・期間あり。分割割引により相殺される仕組み。</p>
+</div>
+</div>
+</div>
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-mobile-alt"></i>
+</div>
+<div class="detail-content">
+<h4>おうち割 光セット適用</h4>
+<p>指定オプション（光BBユニット等）加入で、スマホ通信料が永年毎月最大1,100円割引（SoftBank）/ 最大1,650円割引（Y!mobile）。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
