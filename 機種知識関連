@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>スマートフォン機種知識</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f8f9fa;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+    }
+    .slide-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 50px 70px;
+        box-sizing: border-box;
+    }
+    .brand-bar {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 12px;
+        background-color: #e60083;
+    }
+    .corner-accent {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 180px;
+        height: 180px;
+        background: rgba(230, 0, 131, 0.05);
+        border-bottom-left-radius: 100%;
+        z-index: 0;
+    }
+    .header-area {
+        margin-bottom: 30px;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 15px;
+        position: relative;
+    }
+    .title {
+        color: #333;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 10px;
+    }
+    .subtitle {
+        color: #e60083;
+        font-size: 20px;
+        font-weight: 500;
+    }
+    
+    /* Content Layout */
+    .content-wrapper {
+        display: flex;
+        gap: 30px;
+        flex: 1;
+    }
+    .left-col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .right-col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Section Styles */
+    .section-box {
+        background-color: white;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .section-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-left: 5px solid #e60083;
+        padding-left: 12px;
+    }
+    
+    /* OS Comparison */
+    .os-card {
+        background-color: #f9fafb;
+        border-radius: 10px;
+        padding: 15px;
+        border: 1px solid #eee;
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+    .os-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        color: white;
+        flex-shrink: 0;
+    }
+    
+    /* Price Range */
+    .price-range-box {
+        background-color: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+    .range-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        font-weight: 700;
+        color: #333;
+    }
+    .range-bar {
+        height: 6px;
+        border-radius: 3px;
+        background-color: #eee;
+        width: 100%;
+        position: relative;
+    }
+    .range-fill {
+        height: 100%;
+        border-radius: 3px;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    /* Spec Guide */
+    .spec-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+    .spec-item {
+        background-color: #f3f4f6;
+        padding: 12px;
+        border-radius: 8px;
+    }
+    .spec-label {
+        font-size: 12px;
+        color: #666;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+        display: block;
+    }
+    .spec-desc {
+        font-size: 13px;
+        color: #333;
+        line-height: 1.4;
+    }
+    
+    /* Practical Points */
+    .practical-card {
+        background-color: #fff;
+        border: 1px solid #e60083;
+        border-radius: 10px;
+        padding: 15px;
+        position: relative;
+        overflow: hidden;
+    }
+    .practical-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background-color: #e60083;
+    }
+    .point-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+        align-items: flex-start;
+    }
+    .point-row:last-child {
+        margin-bottom: 0;
+    }
+    .point-icon {
+        color: #e60083;
+        margin-top: 3px;
+        width: 20px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="brand-bar"></div>
+<div class="corner-accent"></div>
+<div class="slide-content">
+<div class="header-area">
+<h1 class="title">スマートフォン機種知識（選び方）</h1>
+<p class="subtitle">OS・価格帯・スペックの基礎と接客時のポイント</p>
+</div>
+<div class="content-wrapper">
+<!-- Left Column -->
+<div class="left-col">
+<!-- OS Section -->
+<div class="section-box" style="height: auto;">
+<h3 class="section-title"><i class="fas fa-mobile-alt"></i> OSの基本知識</h3>
+<div class="os-card">
+<div class="os-icon bg-black"><i class="fab fa-apple"></i></div>
+<div>
+<h4 class="font-bold text-gray-800 text-lg">iOS (iPhone)</h4>
+<p class="text-sm text-gray-600 mt-1">
+                                操作が直感的で統一感がある。リセールバリューが高く、OSサポート期間が長い（5〜6年）。周辺機器との連携が強力。
+                            </p>
+</div>
+</div>
+<div class="os-card">
+<div class="os-icon bg-green-500"><i class="fab fa-android"></i></div>
+<div>
+<h4 class="font-bold text-gray-800 text-lg">Android</h4>
+<p class="text-sm text-gray-600 mt-1">
+                                機種の選択肢が豊富（価格・機能）。SDカード対応やカスタマイズ性が高い機種が多い。メーカーにより操作感が異なる。
+                            </p>
+</div>
+</div>
+</div>
+<!-- Price Range Section -->
+<div class="section-box">
+<h3 class="section-title"><i class="fas fa-tags"></i> 価格帯とターゲット</h3>
+<div class="price-range-box">
+<div class="range-header">
+<span>エントリー (~3万円)</span>
+<span class="text-xs bg-gray-200 px-2 py-1 rounded text-gray-600">連絡・Web閲覧中心</span>
+</div>
+<div class="range-bar"><div class="range-fill bg-gray-400" style="width: 30%;"></div></div>
+<p class="text-xs text-gray-500 mt-2">必要最低限の性能。カメラや処理速度は控えめ。シニア・子供向けに多い。</p>
+</div>
+<div class="price-range-box">
+<div class="range-header">
+<span>ミドルレンジ (4~8万円)</span>
+<span class="text-xs bg-blue-100 px-2 py-1 rounded text-blue-600">最も売れ筋</span>
+</div>
+<div class="range-bar"><div class="range-fill bg-blue-500" style="width: 60%;"></div></div>
+<p class="text-xs text-gray-500 mt-2">性能と価格のバランス良。日常使いで困ることはほぼない。おサイフ・防水標準。</p>
+</div>
+<div class="price-range-box">
+<div class="range-header">
+<span>ハイエンド (10万円~)</span>
+<span class="text-xs bg-purple-100 px-2 py-1 rounded text-purple-600">ゲーム・カメラ重視</span>
+</div>
+<div class="range-bar"><div class="range-fill bg-purple-600" style="width: 100%;"></div></div>
+<p class="text-xs text-gray-500 mt-2">最高性能のCPU・カメラ。3Dゲームも快適。最新技術搭載。</p>
+</div>
+</div>
+</div>
+<!-- Right Column -->
+<div class="right-col">
+<!-- Spec Guide Section -->
+<div class="section-box" style="height: auto;">
+<h3 class="section-title"><i class="fas fa-microchip"></i> スペック表の見方</h3>
+<div class="spec-grid">
+<div class="spec-item">
+<span class="spec-label"><i class="fas fa-brain mr-1"></i> SoC (CPU)</span>
+<p class="spec-desc">スマホの頭脳。Snapdragon 8系など数字が大きいほど高性能。サクサク感に直結。</p>
+</div>
+<div class="spec-item">
+<span class="spec-label"><i class="fas fa-memory mr-1"></i> RAM / ROM</span>
+<p class="spec-desc">RAM=作業机（4GB~:普通, 8GB~:快適）。ROM=保存倉庫（写真・アプリ保存容量）。</p>
+</div>
+<div class="spec-item">
+<span class="spec-label"><i class="fas fa-battery-full mr-1"></i> バッテリー</span>
+<p class="spec-desc">容量(mAh)が大きいほど長持ちだが重量増。急速充電W数も重要。</p>
+</div>
+<div class="spec-item">
+<span class="spec-label"><i class="fas fa-tv mr-1"></i> ディスプレイ</span>
+<p class="spec-desc">有機ELは黒が綺麗。リフレッシュレート(Hz)が高いと画面スクロールが滑らか。</p>
+</div>
+</div>
+</div>
+<!-- Practical Section -->
+<div class="section-box">
+<h3 class="section-title"><i class="fas fa-user-check"></i> 実務での確認・提案ポイント</h3>
+<div class="practical-card">
+<div class="point-row">
+<div class="point-icon"><i class="fas fa-check-circle"></i></div>
+<div>
+<p class="font-bold text-gray-800 text-sm">「おサイフケータイ」と「防水・防塵」</p>
+<p class="text-xs text-gray-600">海外製格安機では非対応の場合も。必ず確認する。</p>
+</div>
+</div>
+<div class="point-row">
+<div class="point-icon"><i class="fas fa-check-circle"></i></div>
+<div>
+<p class="font-bold text-gray-800 text-sm">生体認証の種類</p>
+<p class="text-xs text-gray-600">顔認証（マスク対応か？）、指紋認証（画面内か側面か？）。好みが分かれる。</p>
+</div>
+</div>
+<div class="point-row">
+<div class="point-icon"><i class="fas fa-check-circle"></i></div>
+<div>
+<p class="font-bold text-gray-800 text-sm">アップデート保証期間</p>
+<p class="text-xs text-gray-600">同じ機種を長く（3〜4年以上）使うお客様には、保証期間が長いPixelやGalaxy、iPhoneを推奨。</p>
+</div>
+</div>
+<div class="point-row">
+<div class="point-icon"><i class="fas fa-check-circle"></i></div>
+<div>
+<p class="font-bold text-gray-800 text-sm">下取り・リセールバリュー</p>
+<p class="text-xs text-gray-600">「2年後に返却して買い替え」プログラム利用なら、iPhone等の高残価機種がお得な場合が多い。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
