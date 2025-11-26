@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>メリハリ無制限＋（SoftBank）詳細</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f0f0f0;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+    }
+    .slide-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 40px 60px;
+        box-sizing: border-box;
+    }
+    .brand-accent {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 250px;
+        height: 250px;
+        background-color: rgba(230, 0, 131, 0.03);
+        border-radius: 0 0 0 100%;
+        z-index: 0;
+    }
+    .brand-stripe {
+        position: absolute;
+        left: 0;
+        top: 40px;
+        width: 8px;
+        height: 80px;
+        background-color: #e60083;
+    }
+    .header-area {
+        margin-bottom: 30px;
+        padding-left: 24px;
+        position: relative;
+    }
+    .title {
+        color: #333;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+    .subtitle {
+        color: #e60083;
+        font-size: 22px;
+        font-weight: 500;
+        margin-top: 8px;
+    }
+    
+    /* Card Layout */
+    .card-container {
+        display: flex;
+        gap: 30px;
+        flex: 1;
+        align-items: stretch;
+    }
+    .main-card {
+        flex: 0 0 40%;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        border: 1px solid #eaeaea;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .main-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #e60083;
+    }
+    .detail-card {
+        flex: 1;
+        background-color: #fcfcfc;
+        border-radius: 12px;
+        border: 1px solid #eaeaea;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    /* Main Card Content */
+    .plan-icon {
+        font-size: 72px;
+        color: #e60083;
+        margin-bottom: 20px;
+        background-color: rgba(230, 0, 131, 0.1);
+        width: 120px;
+        height: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+    .plan-title-lg {
+        font-size: 32px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .price-tag {
+        font-size: 48px;
+        font-weight: 700;
+        color: #e60083;
+        line-height: 1;
+    }
+    .price-unit {
+        font-size: 20px;
+        color: #666;
+        font-weight: 500;
+    }
+    .price-note {
+        font-size: 14px;
+        color: #888;
+        margin-top: 5px;
+    }
+    .target-badge {
+        background-color: #333;
+        color: white;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 20px;
+    }
+    
+    /* Detail Items */
+    .detail-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+    }
+    .detail-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    .detail-icon {
+        width: 40px;
+        height: 40px;
+        background-color: #e60083;
+        color: white;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        flex-shrink: 0;
+    }
+    .detail-content h4 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #333;
+        margin: 0 0 5px 0;
+    }
+    .detail-content p {
+        font-size: 16px;
+        color: #555;
+        margin: 0;
+        line-height: 1.5;
+    }
+    .highlight-box {
+        background-color: #fff0f5;
+        border-left: 4px solid #e60083;
+        padding: 15px;
+        border-radius: 0 8px 8px 0;
+        margin-top: 5px;
+    }
+    .recommendation-box {
+        background-color: #333;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin-top: auto;
+    }
+    .recommendation-title {
+        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .recommendation-text {
+        font-size: 14px;
+        opacity: 0.9;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="brand-accent"></div>
+<div class="brand-stripe"></div>
+<div class="slide-content">
+<div class="header-area">
+<h1 class="title">メリハリ無制限＋</h1>
+<p class="subtitle">使う月も使わない月も、無駄なく安心のプラン</p>
+</div>
+<div class="card-container">
+<!-- Left Card: Key Info -->
+<div class="main-card">
+<div class="plan-icon">
+<i class="fas fa-chart-area"></i>
+</div>
+<h2 class="plan-title-lg">メリハリ無制限＋</h2>
+<div class="mt-4 text-center">
+<p><span class="price-tag">7,425</span><span class="price-unit">円/月</span></p>
+<p class="price-note">（税込・各種割引前）</p>
+</div>
+<div class="target-badge">無駄なく使いたい方に最適</div>
+<div class="mt-8 w-full">
+<div class="recommendation-box">
+<div class="recommendation-title">
+<i class="fas fa-check-circle text-pink-500"></i>
+<p>こんな方におすすめ</p>
+</div>
+<p class="recommendation-text">
+                            月々のデータ利用量に変動がある方<br/>
+                            動画やSNSをたっぷり楽しみたい方<br/>
+                            普段はあまり使わない月もある方
+                        </p>
+</div>
+</div>
+</div>
+<!-- Right Card: Details -->
+<div class="detail-card">
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-piggy-bank"></i>
+</div>
+<div class="detail-content w-full">
+<h4>勝手に割引（2GB以下）</h4>
+<p>データ利用量が2GB以下の月は、自動的に料金が割引されます。</p>
+<div class="highlight-box">
+<p class="text-sm font-bold text-pink-600">自動で −1,650円割引</p>
+<p class="text-xs text-gray-600 mt-1">※手続き不要で翌月の請求額に反映されます。</p>
+</div>
+</div>
+</div>
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-wifi"></i>
+</div>
+<div class="detail-content">
+<h4>データ通信・テザリング</h4>
+<p>基本データ容量は無制限。テザリング・データシェアは合計<span class="font-bold text-pink-600">50GB/月</span>まで利用可能。</p>
+<p class="text-sm text-gray-500 mt-1">※テザリング等で50GBを超過した場合、対象通信のみ最大300kbpsに制御されます。</p>
+</div>
+</div>
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-clock"></i>
+</div>
+<div class="detail-content">
+<h4>時間帯制御について</h4>
+<p>公平なサービス提供のため、ネットワーク混雑時間帯などに通信速度が制御される場合があります。</p>
+<p class="text-sm text-gray-500 mt-1">※動画視聴やゲームなど、大容量通信時に影響が出る可能性があります。</p>
+</div>
+</div>
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-tags"></i>
+</div>
+<div class="detail-content">
+<h4>適用可能な主な割引</h4>
+<p>新みんな家族割、おうち割 光セットの適用が可能。</p>
+<p class="text-sm text-gray-600">家族3人以上＆固定回線セットで、実質4,928円/月〜利用可能です。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
