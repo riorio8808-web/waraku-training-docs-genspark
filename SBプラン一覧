@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SoftBank 料金プラン一覧</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f0f0f0;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+    }
+    .slide-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 50px 60px;
+        box-sizing: border-box;
+    }
+    .title-area {
+        margin-bottom: 30px;
+        border-left: 8px solid #e60083;
+        padding-left: 20px;
+    }
+    .title {
+        color: #333;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0;
+    }
+    .subtitle {
+        color: #666;
+        font-size: 24px;
+        font-weight: 500;
+        margin-top: 10px;
+    }
+    .brand-accent {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 120px;
+        background-color: #fef0f5;
+        clip-path: polygon(100% 0, 100% 100%, 0 0);
+        z-index: 0;
+    }
+    .brand-line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #e60083;
+    }
+    
+    /* Table Styles */
+    .compare-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+    .compare-table th {
+        background-color: #333;
+        color: white;
+        padding: 15px;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        vertical-align: middle;
+        border-right: 1px solid #555;
+    }
+    .compare-table th.highlight-header {
+        background-color: #e60083;
+    }
+    .compare-table td {
+        padding: 15px;
+        text-align: center;
+        vertical-align: middle;
+        border-bottom: 1px solid #eee;
+        border-right: 1px solid #eee;
+        color: #444;
+        font-size: 16px;
+    }
+    .compare-table td:first-child {
+        font-weight: 700;
+        background-color: #f9f9f9;
+        width: 120px;
+        color: #333;
+    }
+    .compare-table tr:last-child td {
+        border-bottom: none;
+    }
+    .plan-name {
+        font-size: 22px;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 5px;
+    }
+    .plan-tag {
+        display: inline-block;
+        font-size: 12px;
+        padding: 2px 8px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,0.2);
+        margin-bottom: 5px;
+    }
+    .price-lg {
+        font-size: 24px;
+        font-weight: 700;
+        color: #e60083;
+    }
+    .price-unit {
+        font-size: 14px;
+        color: #666;
+        font-weight: normal;
+    }
+    .data-badge {
+        background-color: #e60083;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 16px;
+        display: inline-block;
+    }
+    .data-badge.light {
+        background-color: #888;
+    }
+    .feature-icon {
+        color: #e60083;
+        margin-right: 5px;
+    }
+    .note-area {
+        font-size: 12px;
+        color: #777;
+        margin-top: auto;
+        text-align: right;
+    }
+    .feature-list {
+        text-align: left;
+        font-size: 14px;
+        line-height: 1.5;
+        padding-left: 10px;
+    }
+    .feature-list li {
+        margin-bottom: 4px;
+        position: relative;
+        padding-left: 15px;
+    }
+    .feature-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #e60083;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="brand-accent"></div>
+<div class="brand-line"></div>
+<div class="slide-content">
+<div class="title-area">
+<h1 class="title">SoftBank 料金プラン一覧</h1>
+<h2 class="subtitle">ライフスタイルに合わせた4つの主要プラン</h2>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<table class="compare-table">
+<thead>
+<tr>
+<th style="width: 10%;">項目</th>
+<th class="highlight-header" style="width: 24%;">
+<span class="plan-tag">PayPay還元</span>
+<span class="plan-name">ペイトク<br/>無制限</span>
+</th>
+<th class="highlight-header" style="width: 24%;">
+<span class="plan-tag">スタンダード</span>
+<span class="plan-name">メリハリ<br/>無制限＋</span>
+</th>
+<th style="width: 21%;">
+<span class="plan-tag">ライト利用</span>
+<span class="plan-name">ミニフィット<br/>プラン＋</span>
+</th>
+<th style="width: 21%;">
+<span class="plan-tag">初心者・移行</span>
+<span class="plan-name">スマホデビュー<br/>プラン＋</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>データ<br/>容量</td>
+<td>
+<div class="data-badge">無制限</div>
+<p class="text-xs mt-1 text-gray-500">シェア50GB迄</p>
+</td>
+<td>
+<div class="data-badge">無制限</div>
+<p class="text-xs mt-1 text-gray-500">シェア50GB迄</p>
+</td>
+<td>
+<div class="data-badge light">〜3GB</div>
+<p class="text-xs mt-1 text-gray-500">3段階制定額</p>
+</td>
+<td>
+<div class="data-badge light">4GB / 20GB</div>
+<p class="text-xs mt-1 text-gray-500">選べる2タイプ</p>
+</td>
+</tr>
+<tr>
+<td>基本料金<br/><span class="text-xs font-normal">(割引前/税込)</span></td>
+<td>
+<span class="price-lg">9,625</span><span class="price-unit">円</span>
+</td>
+<td>
+<span class="price-lg">7,425</span><span class="price-unit">円</span>
+</td>
+<td>
+<span class="text-sm">〜1GB: </span><span class="font-bold">3,278</span><span class="price-unit">円</span><br/>
+<span class="text-sm">〜3GB: </span><span class="font-bold">5,478</span><span class="price-unit">円</span>
+</td>
+<td>
+<span class="text-sm">4GB: </span><span class="font-bold">2,266</span><span class="price-unit">円</span><br/>
+<span class="text-sm">20GB: </span><span class="font-bold">3,916</span><span class="price-unit">円</span>
+</td>
+</tr>
+<tr>
+<td>特徴・<br/>メリット</td>
+<td>
+<ul class="feature-list">
+<li>PayPayポイント高還元</li>
+<li>無制限で使い放題</li>
+<li>長期利用特典あり</li>
+</ul>
+</td>
+<td>
+<ul class="feature-list">
+<li>2GB以下なら自動割引</li>
+<li>(-1,650円/月)</li>
+<li>バランス型無制限</li>
+</ul>
+</td>
+<td>
+<ul class="feature-list">
+<li>使った分だけお支払い</li>
+<li>あまり使わない月はおトク</li>
+</ul>
+</td>
+<td>
+<ul class="feature-list">
+<li>ガラケーからのりかえ</li>
+<li>5〜22歳の新規</li>
+<li>1年目割引特典あり</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>通話<br/>オプション</td>
+<td colspan="4">
+<div class="flex justify-center gap-6 text-sm">
+<p><i class="fas fa-phone-alt feature-icon"></i> 準定額OP＋（5分）: <span class="font-bold">880円</span></p>
+<p><i class="fas fa-phone-volume feature-icon"></i> 定額OP＋（24時間）: <span class="font-bold">1,980円</span></p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="note-area">
+<p>※2025年11月時点の情報です。金額は税込です。各種割引（家族割、おうち割光セット等）適用前の料金です。<br/>
+            ※「無制限」プランでも、テザリングやデータシェアの利用量には上限がある場合や、時間帯による速度制御が入る場合があります。</p>
+</div>
+</div>
+</div>
+</body>
+</html>
