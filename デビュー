@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>スマホデビュープラン＋（SoftBank）詳細</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f0f0f0;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+    }
+    .slide-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 40px 60px;
+        box-sizing: border-box;
+    }
+    .brand-accent {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 250px;
+        height: 250px;
+        background-color: rgba(230, 0, 131, 0.03);
+        border-radius: 0 0 0 100%;
+        z-index: 0;
+    }
+    .brand-stripe {
+        position: absolute;
+        left: 0;
+        top: 40px;
+        width: 8px;
+        height: 80px;
+        background-color: #e60083;
+    }
+    .header-area {
+        margin-bottom: 30px;
+        padding-left: 24px;
+        position: relative;
+    }
+    .title {
+        color: #333;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+    .subtitle {
+        color: #e60083;
+        font-size: 22px;
+        font-weight: 500;
+        margin-top: 8px;
+    }
+    
+    /* Card Layout */
+    .card-container {
+        display: flex;
+        gap: 30px;
+        flex: 1;
+        align-items: stretch;
+    }
+    .main-card {
+        flex: 0 0 40%;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        border: 1px solid #eaeaea;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .main-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #e60083;
+    }
+    .detail-card {
+        flex: 1;
+        background-color: #fcfcfc;
+        border-radius: 12px;
+        border: 1px solid #eaeaea;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    /* Main Card Content */
+    .plan-icon {
+        font-size: 64px;
+        color: #e60083;
+        margin-bottom: 20px;
+        background-color: rgba(230, 0, 131, 0.1);
+        width: 120px;
+        height: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+    .plan-title-lg {
+        font-size: 32px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .price-box {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .price-tag {
+        font-size: 40px;
+        font-weight: 700;
+        color: #e60083;
+        line-height: 1;
+    }
+    .price-unit {
+        font-size: 18px;
+        color: #666;
+        font-weight: 500;
+    }
+    .price-note {
+        font-size: 14px;
+        color: #888;
+        margin-top: 5px;
+    }
+    .target-badge {
+        background-color: #333;
+        color: white;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 15px;
+    }
+    
+    /* Detail Items */
+    .detail-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+    }
+    .detail-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    .detail-icon {
+        width: 40px;
+        height: 40px;
+        background-color: #e60083;
+        color: white;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        flex-shrink: 0;
+    }
+    .detail-content h4 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #333;
+        margin: 0 0 5px 0;
+    }
+    .detail-content p {
+        font-size: 16px;
+        color: #555;
+        margin: 0;
+        line-height: 1.5;
+    }
+    .feature-highlight {
+        background-color: #fff0f5;
+        border-left: 4px solid #e60083;
+        padding: 10px 15px;
+        border-radius: 0 8px 8px 0;
+        margin-top: 8px;
+    }
+    .recommendation-box {
+        background-color: #333;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin-top: auto;
+        width: 100%;
+    }
+    .recommendation-title {
+        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .recommendation-text {
+        font-size: 14px;
+        opacity: 0.9;
+    }
+    
+    /* Multi-plan specific */
+    .plan-option-row {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .plan-option {
+        background-color: #f9f9f9;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 10px;
+        text-align: center;
+        flex: 1;
+    }
+    .plan-option h5 {
+        margin: 0;
+        font-size: 16px;
+        color: #333;
+    }
+    .plan-option span {
+        font-weight: 700;
+        color: #e60083;
+        font-size: 20px;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="brand-accent"></div>
+<div class="brand-stripe"></div>
+<div class="slide-content">
+<div class="header-area">
+<h1 class="title">スマホデビュープラン＋</h1>
+<p class="subtitle">初めてスマホを持つ方やガラケーからの乗り換えに最適</p>
+</div>
+<div class="card-container">
+<!-- Left Card: Key Info -->
+<div class="main-card">
+<div class="plan-icon">
+<i class="fas fa-mobile-alt"></i>
+</div>
+<h2 class="plan-title-lg">スマホデビュープラン＋</h2>
+<div class="plan-option-row mt-4">
+<div class="plan-option">
+<h5>ライト</h5>
+<p><span>4GB</span></p>
+</div>
+<div class="plan-option">
+<h5>ベーシック</h5>
+<p><span>20GB</span></p>
+</div>
+</div>
+<div class="price-box">
+<p><span class="price-unit">月額</span><span class="price-tag">1,078</span><span class="price-unit">円〜</span></p>
+<p class="price-note">（税込・翌月から12ヶ月間）</p>
+</div>
+<div class="target-badge">スマホデビュー・シニア向け</div>
+<div class="mt-6 w-full">
+<div class="recommendation-box">
+<div class="recommendation-title">
+<i class="fas fa-check-circle text-pink-500"></i>
+<p>こんな方におすすめ</p>
+</div>
+<p class="recommendation-text">
+                            ガラケーからスマホへ変更する方<br/>
+                            5〜22歳の新規契約の方<br/>
+                            初めてスマホを持つお子様やシニア
+                        </p>
+</div>
+</div>
+</div>
+<!-- Right Card: Details -->
+<div class="detail-card">
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-hand-holding-heart"></i>
+</div>
+<div class="detail-content w-full">
+<h4>選べる2つのデータ容量</h4>
+<p>用途に合わせて「ライト（4GB）」と「ベーシック（20GB）」から選択可能。1年おトク割＋適用で最初の1年は非常におトクに使えます。</p>
+<div class="feature-highlight">
+<div class="flex justify-between items-center mb-1">
+<span class="text-sm font-bold">ライト (4GB)</span>
+<span class="text-sm font-bold text-pink-600">1,078円/月 (1年間)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm font-bold">ベーシック (20GB)</span>
+<span class="text-sm font-bold text-pink-600">2,178円/月 (1年間)</span>
+</div>
+<p class="text-xs text-gray-600 mt-2 text-right">※2年目以降は料金が上がります。</p>
+</div>
+</div>
+</div>
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-user-plus"></i>
+</div>
+<div class="detail-content">
+<h4>加入条件（対象者）</h4>
+<p>以下のいずれかに該当する方が対象です。</p>
+<ul class="list-disc list-inside text-gray-600 mt-1 text-sm">
+<li>MNP/機種変更（ガラケーからの乗り換え）</li>
+<li>5〜22歳の新規契約（使用者登録が必要）</li>
+</ul>
+</div>
+</div>
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-phone-volume"></i>
+</div>
+<div class="detail-content">
+<h4>60歳以上通話特典</h4>
+<p>60歳以上の方が対象プランに加入すると、国内通話24時間かけ放題の「定額オプション＋」が割引になります。</p>
+<p class="text-sm font-bold text-pink-600 mt-1">定額オプション＋ (1,980円) → 880円/月 に割引</p>
+</div>
+</div>
+<div class="detail-item">
+<div class="detail-icon">
+<i class="fas fa-shield-alt"></i>
+</div>
+<div class="detail-content">
+<h4>あんしん機能</h4>
+<p>お子様向けのフィルタリングサービスや、スマホ操作に不安な方向けのサポートオプションなども充実しています。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
