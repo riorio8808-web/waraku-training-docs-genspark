@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Y!mobile 料金プラン一覧</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f0f0f0;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+    }
+    .slide-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 50px 60px;
+        box-sizing: border-box;
+    }
+    .title-area {
+        margin-bottom: 30px;
+        border-left: 8px solid #ff0033;
+        padding-left: 20px;
+    }
+    .title {
+        color: #333;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0;
+    }
+    .subtitle {
+        color: #666;
+        font-size: 24px;
+        font-weight: 500;
+        margin-top: 10px;
+    }
+    .brand-accent {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 120px;
+        background-color: #fff0f2;
+        clip-path: polygon(100% 0, 100% 100%, 0 0);
+        z-index: 0;
+    }
+    .brand-line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #ff0033;
+    }
+    
+    /* Table Styles */
+    .compare-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+    .compare-table th {
+        background-color: #333;
+        color: white;
+        padding: 15px;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        vertical-align: middle;
+        border-right: 1px solid #555;
+    }
+    .compare-table th.highlight-header {
+        background-color: #ff0033;
+    }
+    .compare-table td {
+        padding: 20px;
+        text-align: center;
+        vertical-align: middle;
+        border-bottom: 1px solid #eee;
+        border-right: 1px solid #eee;
+        color: #444;
+        font-size: 18px;
+    }
+    .compare-table td:first-child {
+        font-weight: 700;
+        background-color: #f9f9f9;
+        width: 160px;
+        color: #333;
+    }
+    .compare-table tr:last-child td {
+        border-bottom: none;
+    }
+    .plan-name {
+        font-size: 26px;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 5px;
+    }
+    .plan-tag {
+        display: inline-block;
+        font-size: 14px;
+        padding: 2px 10px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,0.2);
+        margin-bottom: 8px;
+    }
+    .price-lg {
+        font-size: 32px;
+        font-weight: 700;
+        color: #ff0033;
+    }
+    .price-unit {
+        font-size: 16px;
+        color: #666;
+        font-weight: normal;
+    }
+    .data-badge {
+        background-color: #ff0033;
+        color: white;
+        padding: 6px 16px;
+        border-radius: 24px;
+        font-weight: 700;
+        font-size: 20px;
+        display: inline-block;
+    }
+    .data-badge.light {
+        background-color: #888;
+    }
+    .feature-icon {
+        color: #ff0033;
+        margin-right: 5px;
+    }
+    .note-area {
+        font-size: 12px;
+        color: #777;
+        margin-top: auto;
+        text-align: right;
+    }
+    .feature-list {
+        text-align: left;
+        font-size: 16px;
+        line-height: 1.6;
+        padding-left: 20px;
+        display: inline-block;
+    }
+    .feature-list li {
+        margin-bottom: 6px;
+        position: relative;
+        padding-left: 15px;
+    }
+    .feature-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #ff0033;
+    }
+    .speed-box {
+        font-weight: 700;
+        color: #555;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="brand-accent"></div>
+<div class="brand-line"></div>
+<div class="slide-content">
+<div class="title-area">
+<h1 class="title">Y!mobile 料金プラン一覧</h1>
+<h2 class="subtitle">2025年9月開始の新プラン「シンプル3」</h2>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<table class="compare-table">
+<thead>
+<tr>
+<th style="width: 15%;">項目</th>
+<th style="width: 28%;">
+<span class="plan-tag">ライト利用</span>
+<span class="plan-name">シンプル3 S</span>
+</th>
+<th class="highlight-header" style="width: 28%;">
+<span class="plan-tag">おすすめ</span>
+<span class="plan-name">シンプル3 M</span>
+</th>
+<th style="width: 29%;">
+<span class="plan-tag">大容量・通話</span>
+<span class="plan-name">シンプル3 L</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>データ<br/>容量</td>
+<td>
+<div class="data-badge light">5GB</div>
+</td>
+<td>
+<div class="data-badge">30GB</div>
+</td>
+<td>
+<div class="data-badge">35GB</div>
+</td>
+</tr>
+<tr>
+<td>基本料金<br/><span class="text-xs font-normal">(割引前/税込)</span></td>
+<td>
+<span class="price-lg">3,058</span><span class="price-unit">円</span>
+</td>
+<td>
+<span class="price-lg">4,158</span><span class="price-unit">円</span>
+</td>
+<td>
+<span class="price-lg">5,258</span><span class="price-unit">円</span>
+</td>
+</tr>
+<tr>
+<td>超過時<br/>速度</td>
+<td>
+<p class="speed-box">最大 300kbps</p>
+<p class="text-xs text-gray-500 mt-1">※2.5GB超過で128kbps</p>
+</td>
+<td>
+<p class="speed-box">最大 1Mbps</p>
+<p class="text-xs text-gray-500 mt-1">※15GB超過で128kbps</p>
+</td>
+<td>
+<p class="speed-box">最大 1Mbps</p>
+<p class="text-xs text-gray-500 mt-1">※17.5GB超過で128kbps</p>
+</td>
+</tr>
+<tr>
+<td>特徴・<br/>特典</td>
+<td>
+<ul class="feature-list">
+<li>必要最低限の利用に最適</li>
+<li>余ったデータは繰り越し可</li>
+</ul>
+</td>
+<td>
+<ul class="feature-list">
+<li>バランスの良い容量</li>
+<li>動画・SNSも快適</li>
+</ul>
+</td>
+<td>
+<ul class="feature-list">
+<li><span class="font-bold text-red-600">10分かけ放題無料</span></li>
+<li>通話が多い方におトク</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>通話<br/>オプション</td>
+<td colspan="3">
+<div class="flex justify-center gap-8 text-base">
+<p><i class="fas fa-phone-alt feature-icon"></i> だれとでも定額＋（10分）: <span class="font-bold">880円</span> <span class="text-xs text-red-500 ml-1">※Lは無料</span></p>
+<p><i class="fas fa-phone-volume feature-icon"></i> スーパーだれとでも定額＋（24時間）: <span class="font-bold">1,980円</span></p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="note-area">
+<p>※2025年11月時点の情報です。金額は税込です。<br/>
+            ※「シンプル3」は2025年9月25日より提供開始の新プランです。各種割引（おうち割光セット（A）、PayPayカード割など）適用前の料金です。<br/>
+            ※2段階目の速度制限（128kbps）は、規定容量の半分を追加で消費した場合に適用されます。</p>
+</div>
+</div>
+</div>
+</body>
+</html>
