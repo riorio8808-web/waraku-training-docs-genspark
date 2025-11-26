@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>キャリア比較表</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f0f0f0;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+    }
+    .slide-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 50px 60px;
+        box-sizing: border-box;
+    }
+    .title-area {
+        margin-bottom: 20px;
+        border-left: 8px solid #e60083;
+        padding-left: 20px;
+    }
+    .title {
+        color: #333;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0;
+    }
+    .subtitle {
+        color: #666;
+        font-size: 24px;
+        font-weight: 500;
+        margin-top: 10px;
+    }
+    .brand-accent {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 120px;
+        background-color: #fef0f5;
+        clip-path: polygon(100% 0, 100% 100%, 0 0);
+        z-index: 0;
+    }
+    .brand-line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #e60083;
+    }
+    
+    /* Table Styles */
+    .compare-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 10px;
+        table-layout: fixed;
+    }
+    .compare-table th {
+        background-color: #444;
+        color: white;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: 700;
+        text-align: center;
+        vertical-align: middle;
+        border-right: 1px solid #555;
+    }
+    .compare-table th.sb-header {
+        background-color: #e60083; /* SoftBank Pink */
+    }
+    .compare-table th.ym-header {
+        background-color: #ff0033; /* Y!mobile Red */
+    }
+    .compare-table th.docomo-header {
+        background-color: #666; /* Neutral for competitors */
+    }
+    .compare-table th.au-header {
+        background-color: #666; /* Neutral for competitors */
+    }
+    
+    .compare-table td {
+        padding: 10px 12px;
+        text-align: center;
+        vertical-align: middle;
+        border-bottom: 1px solid #eee;
+        border-right: 1px solid #eee;
+        color: #444;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    .compare-table td:first-child {
+        font-weight: 700;
+        background-color: #f9f9f9;
+        width: 100px;
+        color: #333;
+        font-size: 15px;
+    }
+    .compare-table tr:last-child td {
+        border-bottom: none;
+    }
+    
+    /* Card-like styling inside cells */
+    .plan-name {
+        font-size: 18px;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 2px;
+    }
+    .carrier-logo-text {
+        font-size: 12px;
+        opacity: 0.9;
+        display: block;
+        margin-bottom: 4px;
+    }
+    
+    .feature-point {
+        display: flex;
+        align-items: flex-start;
+        text-align: left;
+        margin-bottom: 4px;
+        font-size: 13px;
+    }
+    .feature-point i {
+        margin-right: 6px;
+        margin-top: 3px;
+        flex-shrink: 0;
+        font-size: 12px;
+    }
+    .check-icon { color: #e60083; }
+    .info-icon { color: #666; }
+    
+    .note-area {
+        font-size: 11px;
+        color: #777;
+        margin-top: auto;
+        text-align: right;
+    }
+    
+    /* Highlights */
+    .bg-highlight {
+        background-color: #fff5fa;
+    }
+    .highlight-text {
+        color: #e60083;
+        font-weight: 700;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="brand-accent"></div>
+<div class="brand-line"></div>
+<div class="slide-content">
+<div class="title-area">
+<h1 class="title">キャリア比較表（料金・サービス）</h1>
+<h2 class="subtitle">主要4キャリアのプラン・割引・特徴の比較</h2>
+</div>
+<div class="flex-1 flex flex-col justify-start">
+<table class="compare-table">
+<thead>
+<tr>
+<th style="width: 10%;">項目</th>
+<th class="sb-header" style="width: 22.5%;">
+<span class="carrier-logo-text">SoftBank</span>
+<span class="plan-name">ペイトク無制限</span>
+</th>
+<th class="ym-header" style="width: 22.5%;">
+<span class="carrier-logo-text">Y!mobile</span>
+<span class="plan-name">シンプル3</span>
+</th>
+<th class="docomo-header" style="width: 22.5%;">
+<span class="carrier-logo-text">ドコモ</span>
+<span class="plan-name">eximo / MAX</span>
+</th>
+<th class="au-header" style="width: 22.5%;">
+<span class="carrier-logo-text">au</span>
+<span class="plan-name">使い放題MAX</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主要<br/>プラン</td>
+<td class="bg-highlight">
+<p class="font-bold text-lg mb-1">ペイトク無制限</p>
+<p class="text-sm mb-1">データ無制限</p>
+<p class="highlight-text">PayPay高還元</p>
+</td>
+<td>
+<p class="font-bold text-lg mb-1">シンプル3 S/M/L</p>
+<p class="text-sm mb-1">小〜中容量</p>
+<p class="text-xs text-gray-500">5GB/30GB/35GB</p>
+</td>
+<td>
+<p class="font-bold text-md mb-1">eximo / ドコモMAX</p>
+<p class="text-sm mb-1">無制限・段階制</p>
+<p class="text-xs text-gray-500">dポイント連携</p>
+</td>
+<td>
+<p class="font-bold text-md mb-1">使い放題MAX系</p>
+<p class="text-sm mb-1">無制限</p>
+<p class="text-xs text-gray-500">Pontaポイント連携</p>
+</td>
+</tr>
+<tr>
+<td>家族割引</td>
+<td class="bg-highlight">
+<div class="feature-point">
+<i class="fas fa-check-circle check-icon"></i>
+<span>新みんな家族割<br/>3人で <span class="highlight-text">-1,210円</span></span>
+</div>
+</td>
+<td>
+<div class="feature-point">
+<i class="fas fa-check-circle text-red-500"></i>
+<span>家族割引サービス<br/>2回線目〜 <span class="font-bold">-1,100円</span></span>
+</div>
+</td>
+<td>
+<div class="feature-point">
+<i class="fas fa-info-circle info-icon"></i>
+<span>みんなドコモ割<br/>3人で -1,100円</span>
+</div>
+</td>
+<td>
+<div class="feature-point">
+<i class="fas fa-info-circle info-icon"></i>
+<span>家族割プラス<br/>3人で -1,100円</span>
+</div>
+</td>
+</tr>
+<tr>
+<td>固定回線<br/>セット割</td>
+<td class="bg-highlight">
+<div class="feature-point">
+<i class="fas fa-check-circle check-icon"></i>
+<span>おうち割 光セット<br/><span class="highlight-text">-1,100円</span></span>
+</div>
+<p class="text-xs text-gray-500 mt-1 ml-4">SoftBank 光/Air</p>
+</td>
+<td>
+<div class="feature-point">
+<i class="fas fa-check-circle text-red-500"></i>
+<span>おうち割 光セット(A)<br/><span class="font-bold text-red-500">-1,650円</span></span>
+</div>
+<p class="text-xs text-gray-500 mt-1 ml-4">SoftBank 光/Air</p>
+</td>
+<td>
+<div class="feature-point">
+<i class="fas fa-info-circle info-icon"></i>
+<span>ドコモ光セット割<br/>-1,100円</span>
+</div>
+<p class="text-xs text-gray-500 mt-1 ml-4">ドコモ光/home 5G</p>
+</td>
+<td>
+<div class="feature-point">
+<i class="fas fa-info-circle info-icon"></i>
+<span>auスマートバリュー<br/>-1,100円</span>
+</div>
+<p class="text-xs text-gray-500 mt-1 ml-4">auひかり/WiMAX等</p>
+</td>
+</tr>
+<tr>
+<td>カード<br/>決済特典</td>
+<td class="bg-highlight">
+<div class="feature-point">
+<i class="fas fa-coins check-icon"></i>
+<span>PayPayカード割<br/>-187円</span>
+</div>
+<p class="text-xs font-bold text-pink-600 mt-1 ml-4">ポイント最大+5%</p>
+</td>
+<td>
+<div class="feature-point">
+<i class="fas fa-credit-card text-red-500"></i>
+<span>PayPayカード割<br/>-330円/-550円</span>
+</div>
+</td>
+<td>
+<div class="feature-point">
+<i class="fas fa-credit-card info-icon"></i>
+<span>dカードお支払割<br/>-187円</span>
+</div>
+</td>
+<td>
+<div class="feature-point">
+<i class="fas fa-credit-card info-icon"></i>
+<span>au PAY カードお支払割<br/>-110円</span>
+</div>
+</td>
+</tr>
+<tr>
+<td>強み・<br/>特徴</td>
+<td class="bg-highlight">
+<ul class="list-none text-left text-xs pl-1 space-y-1">
+<li><span class="text-pink-600 font-bold">●</span> PayPay経済圏との連携最強</li>
+<li><span class="text-pink-600 font-bold">●</span> 無制限でエンタメ楽しみ放題</li>
+<li><span class="text-pink-600 font-bold">●</span> 店舗サポート充実</li>
+</ul>
+</td>
+<td>
+<ul class="list-none text-left text-xs pl-1 space-y-1">
+<li><span class="text-red-500 font-bold">●</span> 安さと品質のバランス</li>
+<li><span class="text-red-500 font-bold">●</span> 親子割等の強力なCP</li>
+<li><span class="text-red-500 font-bold">●</span> 店舗サポート充実</li>
+</ul>
+</td>
+<td>
+<ul class="list-none text-left text-xs pl-1 space-y-1">
+<li><span class="text-gray-500">●</span> 通信品質・エリアの信頼性</li>
+<li><span class="text-gray-500">●</span> dポイント経済圏</li>
+<li><span class="text-gray-500">●</span> 家族間通話無料</li>
+</ul>
+</td>
+<td>
+<ul class="list-none text-left text-xs pl-1 space-y-1">
+<li><span class="text-gray-500">●</span> 独自の金融連携(マネ活)</li>
+<li><span class="text-gray-500">●</span> エンタメパック充実</li>
+<li><span class="text-gray-500">●</span> Ponta経済圏</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="grid grid-cols-2 gap-4 mt-2">
+<div class="bg-gray-50 p-3 rounded border border-gray-200">
+<h3 class="text-sm font-bold text-gray-700 mb-1"><i class="fas fa-lightbulb text-yellow-500 mr-1"></i> 比較のポイント</h3>
+<p class="text-xs text-gray-600">
+                    無制限利用ならSoftBank/ドコモ/auが選択肢ですが、<span class="font-bold text-pink-600">PayPayポイント還元</span>を重視するならSoftBankが圧倒的におトクです。
+                    中容量・低価格を求めるなら、サブブランドの中でも<span class="font-bold text-red-500">親子割</span>や<span class="font-bold text-red-500">おうち割（A）</span>の割引額が大きいY!mobileが優秀です。
+                </p>
+</div>
+<div class="bg-gray-50 p-3 rounded border border-gray-200">
+<h3 class="text-sm font-bold text-gray-700 mb-1"><i class="fas fa-exclamation-triangle text-gray-500 mr-1"></i> 注意事項</h3>
+<p class="text-xs text-gray-600">
+                    ※ドコモ・auのプラン名称や内容は最新情報（2025年時点の発表・改定）に基づきますが、研修時点での各社公式サイト情報を必ずご確認ください。<br/>
+                    ※割引額は最大適用時のものであり、プランや条件によって異なる場合があります。
+                </p>
+</div>
+</div>
+</div>
+<div class="note-area">
+<p>※金額は税込です。比較内容は2025年11月時点の情報を基にしています。<br/>
+            ※Y!mobileの家族割引サービスとおうち割 光セット(A)は併用不可です（表内ではそれぞれの最大割引額を記載）。</p>
+</div>
+</div>
+</div>
+</body>
+</html>
