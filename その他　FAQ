@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>質疑応答・参考資料</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f8f9fa;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+    }
+    .slide-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 50px 70px;
+        box-sizing: border-box;
+    }
+    .brand-bar {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 12px;
+        background-color: #e60083;
+    }
+    .corner-accent {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 180px;
+        height: 180px;
+        background: rgba(230, 0, 131, 0.05);
+        border-bottom-left-radius: 100%;
+        z-index: 0;
+    }
+    .header-area {
+        margin-bottom: 30px;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 15px;
+        position: relative;
+    }
+    .title {
+        color: #333;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 10px;
+    }
+    .subtitle {
+        color: #e60083;
+        font-size: 20px;
+        font-weight: 500;
+    }
+    
+    /* Content Layout */
+    .content-wrapper {
+        display: flex;
+        gap: 40px;
+        flex: 1;
+    }
+    .left-col {
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .right-col {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Section Styles */
+    .section-box {
+        background-color: white;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .section-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-left: 5px solid #e60083;
+        padding-left: 12px;
+    }
+
+    /* FAQ Styles */
+    .faq-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .faq-item {
+        background-color: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 15px 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .faq-q {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+    .q-icon {
+        background-color: #e60083;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+        font-size: 14px;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+    .q-text {
+        font-weight: 700;
+        color: #333;
+        font-size: 16px;
+    }
+    .faq-a {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding-left: 34px;
+    }
+    .a-icon {
+        color: #e60083;
+        font-weight: 700;
+        font-size: 16px;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+    .a-text {
+        color: #666;
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    /* Reference Links */
+    .link-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .link-item {
+        background-color: #f9fafb;
+        border: 1px solid #eee;
+        padding: 15px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: all 0.2s;
+    }
+    .link-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .link-icon {
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #555;
+        border: 1px solid #ddd;
+    }
+    .link-text h4 {
+        margin: 0;
+        font-size: 16px;
+        color: #333;
+        font-weight: 700;
+    }
+    .link-text p {
+        margin: 0;
+        font-size: 12px;
+        color: #888;
+    }
+    .external-icon {
+        color: #ccc;
+    }
+
+    /* Note Box */
+    .note-box {
+        background-color: #fff1f2;
+        border: 1px solid #fda4af;
+        border-radius: 8px;
+        padding: 20px;
+        display: flex;
+        gap: 15px;
+        margin-top: auto;
+    }
+    .note-icon {
+        color: #be123c;
+        font-size: 24px;
+        margin-top: 2px;
+    }
+    .note-content h4 {
+        margin: 0 0 5px 0;
+        color: #9f1239;
+        font-size: 16px;
+        font-weight: 700;
+    }
+    .note-content p {
+        margin: 0;
+        color: #881337;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="brand-bar"></div>
+<div class="corner-accent"></div>
+<div class="slide-content">
+<div class="header-area">
+<h1 class="title">質疑応答・参考資料</h1>
+<p class="subtitle">よくある質問（FAQ）と公式情報へのアクセス</p>
+</div>
+<div class="content-wrapper">
+<!-- Left Column -->
+<div class="left-col">
+<div class="section-box">
+<h3 class="section-title"><i class="fas fa-question-circle"></i> よくある質問 (FAQ)</h3>
+<div class="faq-container">
+<div class="faq-item">
+<div class="faq-q">
+<div class="q-icon">Q</div>
+<p class="q-text">「新みんな家族割」と「おうち割 光セット」は併用できますか？</p>
+</div>
+<div class="faq-a">
+<span class="a-icon">A.</span>
+<p class="a-text">はい、SoftBankでは併用可能です。それぞれの条件を満たせば、両方の割引が適用されます。Y!mobileの「家族割引サービス」と「おうち割 光セット(A)」は併用できません（光セットが優先されます）。</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">
+<div class="q-icon">Q</div>
+<p class="q-text">契約初月の基本料金や割引はどうなりますか？</p>
+</div>
+<div class="faq-a">
+<span class="a-icon">A.</span>
+<p class="a-text">基本料金は多くのプランで日割り計算になりますが、定額オプション等は全額発生する場合があります。また、割引サービス（おうち割など）は、条件を満たした翌月からの適用となるケースが一般的です。</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">
+<div class="q-icon">Q</div>
+<p class="q-text">テザリングに容量制限はありますか？</p>
+</div>
+<div class="faq-a">
+<span class="a-icon">A.</span>
+<p class="a-text">SoftBankの「メリハリ無制限＋」や「ペイトク無制限」では、テザリングとデータシェアの合計で月50GBの上限があります。上限を超えるとテザリング等は低速化しますが、スマホ本体のデータ通信は無制限のままです。</p>
+</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">
+<div class="q-icon">Q</div>
+<p class="q-text">通信速度の制御（制限）について教えてください。</p>
+</div>
+<div class="faq-a">
+<span class="a-icon">A.</span>
+<p class="a-text">無制限プランでも、一定期間に大量の通信を行った場合や混雑する時間帯に速度制御がかかる場合があります。Y!mobileのM/Lプランは容量超過後も最大1Mbpsで利用可能です。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column -->
+<div class="right-col">
+<div class="section-box">
+<h3 class="section-title"><i class="fas fa-link"></i> 公式参考リンク</h3>
+<div class="link-list">
+<div class="link-item">
+<div class="link-info">
+<div class="link-icon" style="color: #999;"><i class="fas fa-mobile-alt"></i></div>
+<div class="link-text">
+<h4>SoftBank 公式サイト</h4>
+<p>料金プラン / キャンペーン / エリア</p>
+</div>
+</div>
+<i class="fas fa-external-link-alt external-icon"></i>
+</div>
+<div class="link-item">
+<div class="link-info">
+<div class="link-icon" style="color: #ef3340;"><i class="fas fa-store"></i></div>
+<div class="link-text">
+<h4>Y!mobile 公式サイト</h4>
+<p>シンプル3詳細 / 割引シミュレーション</p>
+</div>
+</div>
+<i class="fas fa-external-link-alt external-icon"></i>
+</div>
+<div class="link-item">
+<div class="link-info">
+<div class="link-icon" style="color: #007aff;"><i class="fas fa-wifi"></i></div>
+<div class="link-text">
+<h4>SoftBank 光 / Air</h4>
+<p>固定回線サービス詳細 / 工事情報</p>
+</div>
+</div>
+<i class="fas fa-external-link-alt external-icon"></i>
+</div>
+</div>
+</div>
+<div class="note-box">
+<div class="note-icon"><i class="fas fa-exclamation-triangle"></i></div>
+<div class="note-content">
+<h4>本資料のご利用について</h4>
+<p>本資料は2025年11月時点の情報を基に作成された研修用資料です。料金プラン、キャンペーン内容、割引条件等は変更される可能性があります。<br/>お客様へのご案内の際は、必ず最新の公式情報をWebサイト等でご確認ください。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
