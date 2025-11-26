@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>割引適用の実例（Y!mobile）</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f0f0f0;
+    }
+    .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+    }
+    .slide-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 50px 60px;
+        box-sizing: border-box;
+    }
+    .title-area {
+        margin-bottom: 30px;
+        border-left: 8px solid #ff0033; /* Y!mobile Red */
+        padding-left: 20px;
+    }
+    .title {
+        color: #333;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0;
+    }
+    .subtitle {
+        color: #666;
+        font-size: 24px;
+        font-weight: 500;
+        margin-top: 10px;
+    }
+    .brand-accent {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 120px;
+        background-color: #ffe6ea;
+        clip-path: polygon(100% 0, 100% 100%, 0 0);
+        z-index: 0;
+    }
+    .brand-line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #ff0033; /* Y!mobile Red */
+    }
+    
+    /* Table Styles */
+    .compare-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        background-color: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        border: 1px solid #eee;
+    }
+    .compare-table th {
+        background-color: #333;
+        color: white;
+        padding: 18px;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+        vertical-align: middle;
+        border-right: 1px solid #555;
+    }
+    .compare-table th.ym-header {
+        background-color: #ff0033;
+    }
+    .compare-table td {
+        padding: 15px 20px;
+        text-align: center;
+        vertical-align: middle;
+        border-bottom: 1px solid #eee;
+        border-right: 1px solid #eee;
+        color: #444;
+        font-size: 18px;
+    }
+    .compare-table td:first-child {
+        font-weight: 700;
+        background-color: #f9f9f9;
+        width: 200px;
+        color: #333;
+        text-align: left;
+        padding-left: 30px;
+    }
+    .compare-table tr:last-child td {
+        border-bottom: none;
+    }
+    .compare-table tr.total-row td {
+        background-color: #fff5f7;
+        border-top: 2px solid #ff0033;
+        color: #ff0033;
+        font-weight: 700;
+    }
+    .compare-table tr.total-row td:first-child {
+        background-color: #ffe6ea;
+        color: #ff0033;
+    }
+
+    .plan-name {
+        font-size: 24px;
+        font-weight: 700;
+        display: block;
+    }
+    .plan-capacity {
+        font-size: 14px;
+        opacity: 0.9;
+        margin-top: 4px;
+        display: block;
+    }
+    
+    .price-lg {
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 1;
+    }
+    .price-unit {
+        font-size: 16px;
+        font-weight: normal;
+        margin-left: 2px;
+    }
+    .price-original {
+        color: #666;
+        font-size: 20px;
+    }
+    .discount-val {
+        color: #e60000;
+        font-weight: 700;
+    }
+    .note-area {
+        font-size: 12px;
+        color: #777;
+        margin-top: auto;
+        text-align: right;
+        line-height: 1.4;
+    }
+    
+    /* Discount flow indicators */
+    .calc-symbol {
+        color: #bbb;
+        font-size: 14px;
+        margin-right: 4px;
+    }
+</style>
+</head>
+<body>
+<div class="slide-container">
+<div class="brand-accent"></div>
+<div class="brand-line"></div>
+<div class="slide-content">
+<div class="title-area">
+<h1 class="title">割引適用の実例（Y!mobile）</h1>
+<h2 class="subtitle">シンプル3 S/M/L おトクな割引適用後の実質料金</h2>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<p class="mb-4 text-gray-600 font-medium pl-2">
+<i class="fas fa-info-circle mr-2 text-red-500"></i>
+            「おうち割 光セット（A）」と「PayPayカード割（ゴールド）」を適用した場合の試算例
+        </p>
+<table class="compare-table">
+<thead>
+<tr>
+<th>項目</th>
+<th class="ym-header">
+<span class="plan-name">シンプル3 S</span>
+<span class="plan-capacity">5GB</span>
+</th>
+<th class="ym-header">
+<span class="plan-name">シンプル3 M</span>
+<span class="plan-capacity">30GB</span>
+</th>
+<th class="ym-header">
+<span class="plan-name">シンプル3 L</span>
+<span class="plan-capacity">35GB</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基本使用料<br/><span class="text-xs font-normal text-gray-500">（割引前・税込）</span></td>
+<td>
+<span class="price-original">3,058</span><span class="price-unit text-gray-500">円</span>
+</td>
+<td>
+<span class="price-original">4,158</span><span class="price-unit text-gray-500">円</span>
+</td>
+<td>
+<span class="price-original">5,258</span><span class="price-unit text-gray-500">円</span>
+</td>
+</tr>
+<tr>
+<td>おうち割<br/>光セット（A）</td>
+<td>
+<span class="calc-symbol">▲</span><span class="discount-val">1,650</span><span class="price-unit text-gray-500">円</span>
+</td>
+<td>
+<span class="calc-symbol">▲</span><span class="discount-val">1,650</span><span class="price-unit text-gray-500">円</span>
+</td>
+<td>
+<span class="calc-symbol">▲</span><span class="discount-val">1,650</span><span class="price-unit text-gray-500">円</span>
+</td>
+</tr>
+<tr>
+<td>PayPayカード割<br/><span class="text-xs font-normal text-gray-500">（ゴールド利用時）※</span></td>
+<td>
+<span class="calc-symbol">▲</span><span class="discount-val">550</span><span class="price-unit text-gray-500">円</span>
+</td>
+<td>
+<span class="calc-symbol">▲</span><span class="discount-val">550</span><span class="price-unit text-gray-500">円</span>
+</td>
+<td>
+<span class="calc-symbol">▲</span><span class="discount-val">550</span><span class="price-unit text-gray-500">円</span>
+</td>
+</tr>
+<tr class="total-row">
+<td>実質月額料金</td>
+<td>
+<span class="price-lg">858</span><span class="price-unit">円</span>
+</td>
+<td>
+<span class="price-lg">1,958</span><span class="price-unit">円</span>
+</td>
+<td>
+<span class="price-lg">3,058</span><span class="price-unit">円</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="mt-4 flex justify-between items-start bg-gray-50 p-4 rounded-lg border border-gray-200">
+<div class="flex items-start gap-3 w-1/2">
+<div class="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center shrink-0 text-xs mt-0.5">注</div>
+<div class="text-sm text-gray-700">
+<p class="font-bold mb-1">割引の注意点</p>
+<ul class="list-disc pl-4 space-y-1 text-gray-600">
+<li>「おうち割 光セット（A）」は別途SoftBank 光/Airの契約と指定オプションへの加入が必要です。</li>
+<li>「PayPayカード割」は請求発生月の末日時点で条件を満たすカードでの支払いが設定されている必要があります。</li>
+</ul>
+</div>
+</div>
+<div class="flex items-start gap-3 w-1/2 pl-4 border-l border-gray-300">
+<div class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center shrink-0 text-xs mt-0.5">得</div>
+<div class="text-sm text-gray-700">
+<p class="font-bold mb-1">さらにおトクに（親子割）</p>
+<p class="text-gray-600">
+                        5〜18歳の方とそのご家族なら<span class="text-red-500 font-bold">「ワイモバイル親子割」</span>で<br/>
+                        シンプル3 M/Lが最大13ヶ月間、さらに<span class="text-red-500 font-bold">1,100円割引</span>！
+                    </p>
+</div>
+</div>
+</div>
+</div>
+<div class="note-area">
+<p>※表示価格は税込です。PayPayカード ゴールドは年会費11,000円（税込）がかかります。通常のPayPayカードの場合は割引額が330円/月となります。<br/>
+            ※「おうち割 光セット（A）」と「家族割引サービス」は併用できません。家族割引サービスの場合は2回線目以降が1,100円割引となります。</p>
+</div>
+</div>
+</div>
+</body>
+</html>
